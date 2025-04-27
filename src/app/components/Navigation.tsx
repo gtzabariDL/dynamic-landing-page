@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -36,12 +35,11 @@ export default function Navigation() {
     <>
       <nav className="w-full bg-white px-4 lg:px-8 py-3 flex justify-between items-center shadow-sm sticky top-0 z-50">
         <div className="flex items-center">
-          <Image
-            src="/doorloopLogo.svg"
+          <img
+            src={`${process.env.NODE_ENV === 'production' ? '/dynamic-landing-page' : ''}/doorloopLogo.svg`}
             alt="DoorLoop Logo"
             width={120}
             height={32}
-            priority
           />
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center ml-12 space-x-8">
@@ -93,12 +91,11 @@ export default function Navigation() {
           <div className="flex flex-col h-full">
             {/* Header */}
             <div className="flex justify-between items-center px-4 py-3">
-              <Image
-                src="/doorloopLogo.svg"
+              <img
+                src={`${process.env.NODE_ENV === 'production' ? '/dynamic-landing-page' : ''}/doorloopLogo.svg`}
                 alt="DoorLoop Logo"
                 width={120}
                 height={32}
-                priority
               />
               <button 
                 onClick={() => setIsMenuOpen(false)}
