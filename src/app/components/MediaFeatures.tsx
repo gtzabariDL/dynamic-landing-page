@@ -1,13 +1,13 @@
 import Image from 'next/image';
 
 const mediaFeatures = [
-  { src: '/mediaLogos/nbc.svg', alt: 'NBC' },
-  { src: '/mediaLogos/techcrunch.svg', alt: 'TechCrunch' },
-  { src: '/mediaLogos/insider.svg', alt: 'Insider' },
-  { src: '/mediaLogos/forbes.svg', alt: 'Forbes' },
-  { src: '/mediaLogos/cbs.svg', alt: 'CBS' },
-  { src: '/mediaLogos/therealdeal.svg', alt: 'The Real Deal' },
-  { src: '/mediaLogos/foxnews.svg', alt: 'Fox News' },
+  { src: 'mediaLogos/nbc.svg', alt: 'NBC' },
+  { src: 'mediaLogos/techcrunch.svg', alt: 'TechCrunch' },
+  { src: 'mediaLogos/insider.svg', alt: 'Insider' },
+  { src: 'mediaLogos/forbes.svg', alt: 'Forbes' },
+  { src: 'mediaLogos/cbs.svg', alt: 'CBS' },
+  { src: 'mediaLogos/therealdeal.svg', alt: 'The Real Deal' },
+  { src: 'mediaLogos/foxnews.svg', alt: 'Fox News' },
 ];
 
 export default function MediaFeatures() {
