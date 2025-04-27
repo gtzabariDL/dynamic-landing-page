@@ -92,7 +92,7 @@ export default function Navigation() {
             {/* Header */}
             <div className="flex justify-between items-center px-4 py-3">
               <img
-                src={`${process.env.NODE_ENV === 'production' ? '/dynamic-landing-page' : ''}/doorloopLogo.svg`}
+                src={`${process.env.NODE_ENV === 'production' ? '/dynamic-landing-page' : ''}doorloopLogo.svg`}
                 alt="DoorLoop Logo"
                 width={120}
                 height={32}

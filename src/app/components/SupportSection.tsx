@@ -46,7 +46,7 @@ export default function SupportSection() {
       {/* Right side - Image */}
       <div className="w-full md:w-1/2 flex justify-center md:justify-end">
         <Image 
-          src="/supportStats.svg" 
+          src="supportStats.svg" 
           alt="Support Statistics" 
           width={350} 
           height={300}

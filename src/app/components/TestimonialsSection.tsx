@@ -5,25 +5,25 @@ const testimonials = [
     quote: "We operate 120 units of affordable housing and we used to keep track of rent in a note section on Teams. We originally switched to DoorLoop to have a better rent ledger, but realized we can easily do every other property management tasks on the software too.",
     name: "Alan Owen",
     title: "Landlord, The Xandria Foundation",
-    image: "/comment.svg"
+    image: "comment.svg"
   },
   {
     quote: "My company specializes in helping tenants become homeowners. I switched to DoorLoop because it's a great all-in-one tool, and a lot more affordable than other programs.",
     name: "Walter Wolford",
     title: "Investors To Deal Maker",
-    image: "/comment.svg"
+    image: "comment.svg"
   },
   {
     quote: "DoorLoop has made my life very easy with automating everything from rent payments, recurring expenses, taxes, insurance and more. It saves me at least 3 hours a month just on these 2 items alone.",
     name: "Harrison Furman",
     title: "Owner, Green Wave Capital",
-    image: "/comment.svg"
+    image: "comment.svg"
   },
   {
     quote: "DoorLoop is unlike anything I've experienced before. I added my first property myself within minutes, not hours.",
     name: "David Burian",
     title: "Property Manager RE Equity LLC",
-    image: "/comment.svg"
+    image: "comment.svg"
   }
 ];
 

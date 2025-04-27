@@ -6,7 +6,7 @@ export default function PropertyManagement() {
       {/* Left side - Image */}
       <div className="w-full md:w-1/2 relative hidden md:block">
         <Image
-          src="/manageAnyProperty.svg"
+          src="manageAnyProperty.svg"
           alt="Property Management Dashboard"
           width={600}
           height={500}

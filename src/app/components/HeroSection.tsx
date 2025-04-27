@@ -1,10 +1,10 @@
 import Image from 'next/image';
 
 const reviewPlatforms = [
-  { src: '/softwareAdvice.svg', alt: 'Software Advice' },
-  { src: '/capterra.svg', alt: 'Capterra' },
-  { src: '/g2crowd.svg', alt: 'G2 Crowd' },
-  { src: '/getapp.svg', alt: 'GetApp' },
+  { src: 'softwareAdvice.svg', alt: 'Software Advice' },
+  { src: 'capterra.svg', alt: 'Capterra' },
+  { src: 'g2crowd.svg', alt: 'G2 Crowd' },
+  { src: 'getapp.svg', alt: 'GetApp' },
 ];
 
 export default function HeroSection() {
@@ -53,7 +53,7 @@ export default function HeroSection() {
       <div className="flex flex-col items-center w-full max-w-sm space-y-2 mt-6">
         <Image
           className="dark:invert"
-          src="/saleIcon.svg"
+          src="saleIcon.svg"
           alt="Spring Sale Icon"
           width={120}
           height={60}
