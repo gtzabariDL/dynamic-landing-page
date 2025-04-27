@@ -1,0 +1,40 @@
+import Image from 'next/image';
+
+const mediaFeatures = [
+  { src: '/mediaLogos/nbc.svg', alt: 'NBC' },
+  { src: '/mediaLogos/techcrunch.svg', alt: 'TechCrunch' },
+  { src: '/mediaLogos/insider.svg', alt: 'Insider' },
+  { src: '/mediaLogos/forbes.svg', alt: 'Forbes' },
+  { src: '/mediaLogos/cbs.svg', alt: 'CBS' },
+  { src: '/mediaLogos/therealdeal.svg', alt: 'The Real Deal' },
+  { src: '/mediaLogos/foxnews.svg', alt: 'Fox News' },
+];
+
+export default function MediaFeatures() {
+  return (
+    <section className="flex-grow flex-col flex items-center justify-center bg-white px-4 py-10 space-y-6 w-full">
+      <div className="text-gray-600 text-center">As seen on</div>
+      <div className="grid grid-cols-2 md:flex md:flex-wrap justify-center items-center gap-6 mt-4">
+        {mediaFeatures.map((platform, index) => {
+          const isLast = index === mediaFeatures.length - 1;
+          const isOdd = mediaFeatures.length % 2 !== 0;
+
+          return (
+            <div
+              key={platform.alt}
+              className={`flex justify-center ${isLast && isOdd ? 'col-span-2 md:col-span-1' : ''}`}
+            >
+              <Image 
+                src={platform.src} 
+                alt={platform.alt} 
+                width={70} 
+                height={40}
+                className="w-auto h-auto"
+              />
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+} 
