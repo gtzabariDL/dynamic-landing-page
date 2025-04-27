@@ -36,7 +36,7 @@ export default function Navigation() {
       <nav className="w-full bg-white px-4 lg:px-8 py-3 flex justify-between items-center shadow-sm sticky top-0 z-50">
         <div className="flex items-center">
           <img
-            src={`${process.env.NODE_ENV === 'production' ? '/dynamic-landing-page' : ''}doorloopLogo.svg`}
+            src={`${process.env.NODE_ENV === 'production' ? '/dynamic-landing-page' : ''}/doorloopLogo.svg`}
             alt="DoorLoop Logo"
             width={120}
             height={32}
@@ -92,7 +92,7 @@ export default function Navigation() {
             {/* Header */}
             <div className="flex justify-between items-center px-4 py-3">
               <img
-                src={`${process.env.NODE_ENV === 'production' ? '/dynamic-landing-page' : ''}doorloopLogo.svg`}
+                src={`${process.env.NODE_ENV === 'production' ? '/dynamic-landing-page' : ''}/doorloopLogo.svg`}
                 alt="DoorLoop Logo"
                 width={120}
                 height={32}
