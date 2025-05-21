@@ -1,6 +1,6 @@
 export default function FeaturesSection() {
   return (
-    <section className="flex-grow flex-col flex items-center justify-center bg-[#F5F7FA] px-[5%] py-12 md:py-40 space-y-6 w-full text-center" id="features">
+    <section className="flex-grow flex-col flex items-center justify-center bg-[#ECEEF5] px-[5%] py-12 md:py-40 space-y-6 w-full text-center" id="features">
       <div className="text-[#A8A8A8] uppercase text-xs font-bold tracking-wider mb-2">
         Spend less time managing, and more time growing
       </div>
