@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 interface FAQItem {
   question: string;
-  answer: string | JSX.Element;
+  answer: string | React.ReactNode;
 }
 
 interface FAQItemProps {
@@ -45,7 +45,7 @@ const FAQItemComponent = ({ item, isOpen, onToggle }: FAQItemProps) => {
         className={`transition-all duration-200 ease-in-out ${isOpen ? 'max-h-[500px]' : 'max-h-0'} overflow-hidden bg-white`}
       >
         <div className="p-4 rounded-lg text-gray-700">
-          <div className="text-[#333333] text-lg">
+          <div className="text-[#333333] text-base">
             {item.answer}
           </div>
         </div>
