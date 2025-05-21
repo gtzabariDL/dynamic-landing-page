@@ -12,9 +12,9 @@ const mediaFeatures = [
 
 export default function MediaFeatures() {
   return (
-    <section className="flex-grow flex-col flex items-center justify-center bg-white px-4 py-10 space-y-6 w-full">
-      <div className="text-gray-600 text-center">As seen on</div>
-      <div className="grid grid-cols-2 md:flex md:flex-wrap justify-center items-center gap-6 mt-4">
+    <section className="flex-grow flex-col flex items-center justify-center bg-white p-18 space-y-6 w-full md:my-20">
+      <div className="text-[#182c4c] text-center font-semibold text-lg opacity-80">As seen on</div>
+      <div className="grid grid-cols-2 md:flex md:flex-wrap justify-center items-center gap-8 mt-6">
         {mediaFeatures.map((platform, index) => {
           const isLast = index === mediaFeatures.length - 1;
           const isOdd = mediaFeatures.length % 2 !== 0;
@@ -24,10 +24,10 @@ export default function MediaFeatures() {
               key={platform.alt}
               className={`flex justify-center ${isLast && isOdd ? 'col-span-2 md:col-span-1' : ''}`}
             >
-              <Image 
-                src={platform.src} 
-                alt={platform.alt} 
-                width={70} 
+              <Image
+                src={platform.src}
+                alt={platform.alt}
+                width={70}
                 height={40}
                 className="w-auto h-auto"
               />
