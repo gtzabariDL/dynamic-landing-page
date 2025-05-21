@@ -30,11 +30,11 @@ const testimonials = [
 export default function TestimonialsSection() {
   return (
     <section className="flex flex-col items-center justify-center bg-white px-4 md:px-16 py-16 w-full" id="testimonials">
-      <div className="text-center max-w-4xl mx-auto">
-        <span className="text-[#A8A8A8] text-sm uppercase mb-4 block">
+      <div className="text-center mx-auto">
+        <span className="text-[#A8A8A8] text-sm uppercase mb-4 font-bold">
           THE #1 HIGHEST RATED PROPERTY MANAGEMENT SOFTWARE ONLINE
         </span>
-        <h2 className="text-3xl md:text-4xl font-bold text-black mb-16">
+        <h2 className="text-3xl md:text-4xl font-bold text-[#333333] mb-16">
           Trusted by hundreds of thousands
           <br />
           worldwide
@@ -45,10 +45,10 @@ export default function TestimonialsSection() {
       <div className="w-full overflow-hidden">
         <div className="flex animate-scroll gap-6 py-4">
           {[...Array(2)].map((_, repeatIndex) => (
-            <div key={repeatIndex} className="flex gap-6 shrink-0">
+            <div key={repeatIndex} className="flex gap-6 shrink-0 ">
               {testimonials.map((testimonial, index) => (
-                <div key={index} className="flex flex-col space-y-4 w-[300px] md:w-[400px] shrink-0">
-                  <p className="text-gray-700 text-sm leading-relaxed min-h-[120px]">
+                <div key={index} className="flex flex-col space-y-4 w-[300px] md:w-[400px] shrink-0 border-[1px] border-[#F2F2F2] rounded-lg p-8 justify-between">
+                  <p className="text-[#182C4C] text-lg leading-relaxed min-h-[120px]">
                     &ldquo;{testimonial.quote}&rdquo;
                   </p>
                   <div className="flex items-center gap-3">
@@ -60,8 +60,8 @@ export default function TestimonialsSection() {
                       className="rounded-full"
                     />
                     <div>
-                      <p className="font-medium text-black">{testimonial.name}</p>
-                      <p className="text-sm text-gray-600">{testimonial.title}</p>
+                      <p className="font-bold text-[#182C4C] text-sm">{testimonial.name}</p>
+                      <p className="text-xs text-[#182C4C]">{testimonial.title}</p>
                     </div>
                   </div>
                 </div>

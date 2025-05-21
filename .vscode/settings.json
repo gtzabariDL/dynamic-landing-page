@@ -1,0 +1,59 @@
+{
+  "exportall.config.folderListener": ["/libs/dto/src/esignatureRequests"],
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "cSpell.words": [
+    "bugsnag",
+    "bullmq",
+    "clsx",
+    "Gantt",
+    "intellij",
+    "ruleset",
+    "tailwindcss",
+    "testid"
+  ],
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always",
+    "source.fixAll": "explicit"
+  },
+  "workbench.activityBar.orientation": "vertical",
+  "eslint.format.enable": true,
+  "editor.formatOnSave": true,
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "javascript.preferences.importModuleSpecifier": "relative",
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
+    ["(?:twMerge|twJoin)\\(([^;]*)[\\);]", "[`'\"`]([^'\"`;]*)[`'\"`]"],
+    ["clsx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
+    ["cn\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
+    ["[a-zA-Z0-9]+ClassName\\s*=\\s*[\"'`](.*?)[\"'`]", "([\\w-:]*)"]
+  ],
+  "i18n-ally.localesPaths": [
+    "libs/i18n/src/translations"
+  ],
+  "i18n-ally.keystyle": "nested",
+  "i18n-ally.pathMatcher": "{locale}/default/{namespace}.json",
+  "i18n-ally.sourceLanguage": "en",
+  "i18n-ally.displayLanguage": "en",
+  "i18n-ally.enabledFrameworks": [
+    "react-i18next"
+  ],
+  "i18n-ally.usage.scanningIgnore": [
+    "apps/cypress/**/*"
+  ],
+  {
+    "jest.runMode": "on-demand",
+    "jest.jestCommandLine": "../../node_modules/jest/bin/jest.js",
+    "jest.rootPath": "./apps/server",
+    "jest.nodeEnv": {
+      "NODE_OPTIONS": "--experimental-vm-modules --max-old-space-size=65536"
+  }
+}

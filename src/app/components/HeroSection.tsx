@@ -1,5 +1,4 @@
 import Image from 'next/image';
-
 const reviewPlatforms = [
   { src: 'softwareAdvice.svg', alt: 'Software Advice' },
   { src: 'capterra.svg', alt: 'Capterra' },
@@ -9,48 +8,36 @@ const reviewPlatforms = [
 
 export default function HeroSection() {
   return (
-    <section className="flex-grow flex-col flex items-center justify-center bg-[#2F3E83] px-4 py-10 space-y-6 w-full">
-      <div className="text-center">
-        <h1 className="text-white font-bold">
-          <span className="md:inline-block md:space-x-2">
-            <span className="text-4xl md:text-5xl">The</span>{' '}
-            <span className="text-4xl md:text-5xl">Highest-Rated</span>{' '}
-            <span className="text-4xl md:text-5xl">Property</span>{' '}
-            <span className="text-4xl md:text-5xl">Management</span>{' '}
-            <span className="text-4xl md:text-5xl">Software</span>
-          </span>
-        </h1>
-      </div>
+    <section className="flex-grow flex-col flex items-center justify-center bg-[#2F3E83] px-4 py-10 space-y-6 w-full h-dvh">
+      <h1 className="text-white text-4xl md:text-5xl text-center font-normal">
+        The <span className="font-bold">Highest-Rated</span> Property Management Software
+      </h1>
 
-      <span className="text-center text-white max-w-xl text-base md:text-lg">
-        With cutting-edge technology and world-class support, DoorLoop&apos;s property management
-        software helps you make more money, get organized, and grow.
+      <span className="text-center text-white max-w-3xl text-base md:text-lg">
+        Save 15 hours a month, put your rental portfolio on autopilot and make accounting a breeze.
       </span>
 
-      <div className="flex flex-col items-center w-full max-w-sm space-y-2 mt-6">
-        <div className="flex items-center w-full bg-white rounded-md px-3 py-2 shadow-sm">
-          <svg
-            className="w-5 h-5 text-gray-400 mr-2"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-          >
-            <path d="M4 4h16v16H4V4z" stroke="none" />
-            <path d="M22 6l-10 7L2 6" />
-          </svg>
+      <div className="flex flex-col md:flex-row items-center justify-center w-full max-w-2xl space-y-2 md:space-y-0 mt-6 ">
+        <div className="flex items-center w-full md:w-80 bg-white rounded-md md:rounded-md md:rounded-r-none px-3 py-2 shadow-sm h-14">
+          <Image
+            src="email-icon.svg"
+            alt="Email"
+            width={24}
+            height={24}
+            className="text-gray-400 mr-3 ml-1"
+          />
           <input
             type="email"
             placeholder="Your Email"
-            className="w-full outline-none text-gray-700"
+            className="w-full outline-none text-gray-400 text-base placeholder:text-gray-400"
           />
         </div>
-        <button className="w-full bg-[#00C48C] text-white py-2 rounded-md font-medium shadow hover:bg-[#00b27f] transition-colors">
+        <button className="w-full md:w-52 md:px-8 h-14 bg-[#01cc74] text-white py-2 rounded-md md:rounded-l-none md:rounded-r-md font-medium shadow hover:bg-[#00b27f] transition-colors whitespace-nowrap">
           Request a Demo
         </button>
       </div>
 
-      <div className="flex flex-col items-center w-full max-w-sm space-y-2 mt-6">
+      <div className="flex flex-col md:flex-row justify-center items-center w-full max-w-sm md:max-w-full space-y-2 mt-6 space-x-5">
         <Image
           className="dark:invert"
           src="saleIcon.svg"
@@ -59,23 +46,22 @@ export default function HeroSection() {
           height={60}
           priority
         />
-        <span className="text-white text-center text-sm font-bold mt-2">
-          Zero onboarding fees on all annual plans. Hurry—offer ends April 7th.
+        <span className="text-white text-center text-sm font-normal mt-2">
+          A fresh path to real growth. Get one month free + zero onboarding fees on all annual plans. Hurry—offer ends <span className="font-bold">Friday May 23rd</span>.
         </span>
       </div>
 
       {/* Review Platforms Grid */}
-      <div className="grid grid-cols-2 md:flex md:justify-between md:items-center w-full max-w-6xl gap-6 md:gap-0 mt-8">
+      <div className="grid grid-cols-2 md:flex md:items-center max-w-6xl mt-8 gap-6 md:gap-10">
         {reviewPlatforms.map((platform) => (
-          <div key={platform.alt} className="flex justify-center md:flex-1">
-            <Image 
-              src={platform.src} 
-              alt={platform.alt} 
-              width={120} 
-              height={40}
-              className="w-auto h-auto"
-            />
-          </div>
+          <Image
+            key={platform.alt}
+            src={platform.src}
+            alt={platform.alt}
+            width={120}
+            height={40}
+            className="w-auto h-auto"
+          />
         ))}
       </div>
     </section>
