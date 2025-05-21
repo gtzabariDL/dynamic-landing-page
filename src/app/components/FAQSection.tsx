@@ -1,4 +1,58 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+
+interface FAQItem {
+  question: string;
+  answer: string | JSX.Element;
+}
+
+interface FAQItemProps {
+  item: FAQItem;
+  isOpen: boolean;
+  onToggle: (question: string) => void;
+}
+
+const FAQItemComponent = ({ item, isOpen, onToggle }: FAQItemProps) => {
+  return (
+    <div className="flex flex-col rounded-lg">
+      <div
+        onClick={() => onToggle(item.question)}
+        onTouchEnd={(e) => {
+          e.preventDefault();
+          onToggle(item.question);
+        }}
+        className="overflow-hidden cursor-pointer select-none"
+      >
+        <div className="flex justify-between items-center py-8 px-6 text-[#182C4C] bg-white">
+          <h3 className={`font-bold hover:text-[#FF3366] text-gray-900 transition-colors`}>
+            {item.question}
+          </h3>
+          <svg
+            className={`w-5 h-5 text-gray-500 transform transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </div>
+      </div>
+      <div
+        className={`transition-all duration-200 ease-in-out ${isOpen ? 'max-h-[500px]' : 'max-h-0'} overflow-hidden bg-white`}
+      >
+        <div className="p-4 rounded-lg text-gray-700">
+          <div className="text-[#333333] text-lg">
+            {item.answer}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const faqItems = [
   {
@@ -41,15 +95,26 @@ const faqItems = [
 
 export default function FAQSection() {
   const [activeTab, setActiveTab] = useState('About');
-  const [openQuestion, setOpenQuestion] = useState<string | null>(null);
+  const [openQuestions, setOpenQuestions] = useState<string[]>([]);
+
+  const toggleQuestion = (question: string) => {
+    setOpenQuestions(prev =>
+      prev.includes(question)
+        ? prev.filter(q => q !== question)
+        : [...prev, question]
+    );
+  };
+
+  const firstColumnItems = faqItems.slice(0, Math.ceil(faqItems.length / 2));
+  const secondColumnItems = faqItems.slice(Math.ceil(faqItems.length / 2));
 
   return (
     <section id="faqs" className="flex flex-col items-center justify-center bg-[#F5F7FA] px-4 md:px-16 py-16 w-full">
       <div className="text-center mb-8">
-        <div className="text-[#A8A8A8] text-sm uppercase mb-2">
+        <div className="text-[#A8A8A8] text-sm uppercase mb-2 font-bold">
           FAQS
         </div>
-        <h2 className="text-3xl font-bold text-black">
+        <h2 className="text-4xl font-bold text-[#333333]">
           Your Questions Answered
         </h2>
       </div>
@@ -61,75 +126,38 @@ export default function FAQSection() {
             key={tab}
             onClick={() => setActiveTab(tab)}
             onTouchEnd={() => setActiveTab(tab)}
-            className={`text-gray-600 hover:text-black transition-colors relative py-2 ${
-              activeTab === tab ? 'text-black' : ''
-            }`}
+            className={`cursor-pointer hover:text-black transition-colors relative py-2 ${activeTab === tab ? ' text-black' : 'text-[#9C9C9C]'}`}
           >
             {tab}
-            <div 
-              className={`absolute bottom-0 left-0 w-full h-0.5 bg-[#FF3366] transform transition-transform duration-200 ${
-                activeTab === tab ? 'scale-x-100' : 'scale-x-0'
-              }`} 
-            />
           </button>
         ))}
       </div>
 
-      {/* Questions Grid */}
-      <div className="grid md:grid-cols-2 gap-x-6 gap-y-4 w-full max-w-6xl">
-        {faqItems.map((item, index) => (
-          <div
-            key={index}
-            className="flex flex-col"
-          >
-            <div
-              onClick={() => setOpenQuestion(openQuestion === item.question ? null : item.question)}
-              onTouchEnd={(e) => {
-                e.preventDefault();
-                setOpenQuestion(openQuestion === item.question ? null : item.question);
-              }}
-              className="border border-gray-200 rounded-lg bg-white overflow-hidden cursor-pointer select-none"
-            >
-              <div className="flex justify-between items-center p-4">
-                <h3 className={`font-medium ${
-                  openQuestion === item.question ? 'text-[#FF3366]' : 'text-gray-900'
-                } transition-colors`}>
-                  {item.question}
-                </h3>
-                <svg
-                  className={`w-5 h-5 text-gray-500 transform transition-transform duration-200 ${
-                    openQuestion === item.question ? 'rotate-180' : ''
-                  }`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </div>
-            </div>
-            <div 
-              className={`transition-all duration-200 ease-in-out ${
-                openQuestion === item.question ? 'max-h-[500px]' : 'max-h-0'
-              } overflow-hidden bg-white rounded-lg mt-1`}
-            >
-              <div className="p-4 rounded-lg text-gray-700">
-                {typeof item.answer === 'string' ? (
-                  <p>{item.answer}</p>
-                ) : (
-                  <div className="text-gray-700">
-                    {item.answer}
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        ))}
+      {/* FAQ Lists */}
+      <div className="flex flex-col md:flex-row gap-6 w-full max-w-6xl">
+        {/* First Column */}
+        <div className="flex-1 flex flex-col gap-4">
+          {firstColumnItems.map((item, index) => (
+            <FAQItemComponent
+              key={index}
+              item={item}
+              isOpen={openQuestions.includes(item.question)}
+              onToggle={toggleQuestion}
+            />
+          ))}
+        </div>
+
+        {/* Second Column */}
+        <div className="flex-1 flex flex-col gap-4">
+          {secondColumnItems.map((item, index) => (
+            <FAQItemComponent
+              key={index}
+              item={item}
+              isOpen={openQuestions.includes(item.question)}
+              onToggle={toggleQuestion}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
