@@ -1,13 +1,14 @@
 'use client';
 
 import { useState } from 'react';
+import { DoorLoopLogo } from './DoorLoopLogo';
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleMenuClick = (section: string) => {
     setIsMenuOpen(false); // Close the menu
-    
+
     // Wait for the menu to close before scrolling
     setTimeout(() => {
       const element = document.getElementById(section);
@@ -16,7 +17,7 @@ export default function Navigation() {
         const headerOffset = 80;
         const elementPosition = element.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-        
+
         window.scrollTo({
           top: offsetPosition,
           behavior: 'smooth'
@@ -35,12 +36,7 @@ export default function Navigation() {
     <>
       <nav className="w-full bg-white px-4 lg:px-8 py-3 flex justify-between items-center shadow-sm sticky top-0 z-50">
         <div className="flex items-center">
-          <img
-            src={`${process.env.NODE_ENV === 'production' ? '/dynamic-landing-page' : ''}/doorloopLogo.svg`}
-            alt="DoorLoop Logo"
-            width={120}
-            height={32}
-          />
+          <DoorLoopLogo />
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center ml-12 space-x-8">
             {menuItems.map((item) => (
@@ -62,7 +58,7 @@ export default function Navigation() {
           </button>
 
           {/* Mobile Menu Button */}
-          <button 
+          <button
             onClick={() => setIsMenuOpen(true)}
             className="text-[#2F3E83] lg:hidden"
             aria-label="Open menu"
@@ -97,7 +93,7 @@ export default function Navigation() {
                 width={120}
                 height={32}
               />
-              <button 
+              <button
                 onClick={() => setIsMenuOpen(false)}
                 className="text-[#2F3E83]"
                 aria-label="Close menu"
@@ -127,7 +123,7 @@ export default function Navigation() {
                     key={item.label}
                     className="py-3 border-b border-white/20"
                   >
-                    <button 
+                    <button
                       className="text-[#2F3E83] text-lg w-full text-left"
                       onClick={() => handleMenuClick(item.section)}
                     >
