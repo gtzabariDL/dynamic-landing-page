@@ -1,10 +1,27 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { DoorLoopLogo } from './DoorLoopLogo';
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setIsScrolled(scrollPosition > 0);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Initial check
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const handleMenuClick = (section: string) => {
     setIsMenuOpen(false); // Close the menu
@@ -34,7 +51,8 @@ export default function Navigation() {
 
   return (
     <>
-      <nav className="w-full bg-white px-4 lg:px-8 py-3 flex justify-between items-center shadow-sm sticky top-0 z-50">
+      <nav className={`w-full px-4 lg:px-8 py-3 flex justify-between items-center sticky top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white border-b border-gray-200' : 'bg-[#2F3E83]'
+        }`}>
         <div className="flex items-center">
           <DoorLoopLogo />
           {/* Desktop Navigation */}
@@ -42,7 +60,8 @@ export default function Navigation() {
             {menuItems.map((item) => (
               <button
                 key={item.label}
-                className="text-[#2F3E83] hover:text-[#00C48C] transition-colors font-medium"
+                className={`transition-colors font-medium ${isScrolled ? 'text-[#2F3E83] hover:text-[#00C48C]' : 'text-white hover:text-[#00C48C]'
+                  }`}
                 onClick={() => handleMenuClick(item.section)}
               >
                 {item.label}
@@ -53,14 +72,14 @@ export default function Navigation() {
 
         <div className="flex items-center">
           {/* Desktop Demo Button */}
-          <button className="hidden lg:block bg-[#00C48C] text-white px-6 py-2 rounded-md font-medium hover:bg-[#00b27f] transition-colors">
+          <button className="hidden lg:block bg-[#01cc74] text-white px-6 py-2 rounded-md font-medium hover:bg-[#00b27f] transition-colors">
             Request A Demo
           </button>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(true)}
-            className="text-[#2F3E83] lg:hidden"
+            className={`lg:hidden ${isScrolled ? 'text-[#2F3E83]' : 'text-white'}`}
             aria-label="Open menu"
           >
             <svg
