@@ -72,7 +72,7 @@ export default function Navigation() {
 
         <div className="flex items-center">
           {/* Desktop Demo Button */}
-          <button className="hidden lg:block bg-[#00C48C] text-white px-6 py-2 rounded-md font-medium hover:bg-[#00b27f] transition-colors">
+          <button className="hidden lg:block bg-[#01cc74] text-white px-6 py-2 rounded-md font-medium hover:bg-[#00b27f] transition-colors">
             Request A Demo
           </button>
 
