@@ -40,7 +40,7 @@ export default function SupportSection() {
             'Data Migration'
           ].map((item) => (
             <li key={item} className="flex items-start gap-2">
-              <span className="text-green-600 mt-1">✔</span>
+              <span>✔</span>
               <span>{item}</span>
             </li>
           ))}
