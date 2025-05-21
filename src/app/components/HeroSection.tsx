@@ -3,7 +3,7 @@ const reviewPlatforms = [
   { src: 'softwareAdvice.svg', alt: 'Software Advice' },
   { src: 'capterra.svg', alt: 'Capterra' },
   { src: 'g2crowd.svg', alt: 'G2 Crowd' },
-  { src: 'getapp.svg', alt: 'GetApp' },
+  { src: 'getApp.svg', alt: 'GetApp' },
 ];
 
 export default function HeroSection() {
