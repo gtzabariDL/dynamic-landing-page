@@ -10,10 +10,6 @@ const nextConfig = {
   basePath: isProd ? `/${repoName}` : '',
   assetPrefix: isProd ? `/${repoName}/` : '',
   trailingSlash: true,
-  // Ensure all links are properly prefixed
-  experimental: {
-    appDir: true,
-  },
 }
 
 module.exports = nextConfig 
