@@ -51,10 +51,10 @@ export default function Navigation() {
 
   return (
     <>
-      <nav className={`w-full px-4 lg:px-8 py-3 flex justify-between items-center sticky top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white border-b border-gray-200' : 'bg-[#2F3E83]'
+      <nav className={`w-full px-4 lg:px-8 py-3 flex justify-between items-center fixed top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md border-b border-gray-200' : 'bg-[#2F3E83]'
         }`}>
         <div className="flex items-center">
-          <DoorLoopLogo />
+          <DoorLoopLogo color={isScrolled ? "blue" : "white"} />
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center ml-12 space-x-8">
             {menuItems.map((item) => (

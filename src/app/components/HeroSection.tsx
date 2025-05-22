@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { DoorLoopLogo } from './DoorLoopLogo';
 const reviewPlatforms = [
   { src: 'softwareAdvice.svg', alt: 'Software Advice' },
   { src: 'capterra.svg', alt: 'Capterra' },
@@ -8,8 +9,12 @@ const reviewPlatforms = [
 
 export default function HeroSection() {
   return (
-    <section className="flex-grow flex-col flex items-center justify-center bg-[#2F3E83] px-4 py-10 space-y-6 w-full h-dvh">
-      <h1 className="text-white text-4xl md:text-5xl text-center font-normal">
+    <section className="flex-grow flex-col flex items-center justify-center bg-[#2F3E83] px-4 py-8 w-full h-[98vh]">
+      <div className="flex items-center justify-center mb-6">
+        <DoorLoopLogo color="white" width={200} height={54} />
+      </div>
+
+      <h1 className="text-white text-4xl md:text-5xl text-center font-normal mb-6">
         The <span className="font-bold">Highest-Rated</span> Property Management Software
       </h1>
 
@@ -17,7 +22,7 @@ export default function HeroSection() {
         Save 15 hours a month, put your rental portfolio on autopilot and make accounting a breeze.
       </span>
 
-      <div className="flex flex-col md:flex-row items-center justify-center w-full max-w-2xl space-y-2 md:space-y-0 mt-6 ">
+      <div className="flex flex-col md:flex-row items-center justify-center w-full max-w-2xl space-y-2 md:space-y-0 md:my-12 ">
         <div className="flex items-center w-full md:w-80 bg-white rounded-md md:rounded-md md:rounded-r-none px-3 py-2 shadow-sm h-14">
           <Image
             src="email-icon.svg"
