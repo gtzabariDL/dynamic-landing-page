@@ -51,52 +51,54 @@ export default function Navigation() {
 
   return (
     <>
-      <nav className={`w-full px-4 lg:px-8 py-3 flex justify-between items-center fixed top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md border-b border-gray-200' : 'bg-[#2F3E83]'
+      <nav className={`w-full px-4 lg:px-8 py-3 fixed top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md border-b border-gray-200' : 'bg-[#2F3E83]'
         }`}>
-        <div className="flex items-center">
-          <DoorLoopLogo color={isScrolled ? "blue" : "white"} />
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center ml-12 space-x-8">
-            {menuItems.map((item) => (
-              <button
-                key={item.label}
-                className={`transition-colors font-medium ${isScrolled ? 'text-[#2F3E83] hover:text-[#00C48C]' : 'text-white hover:text-[#00C48C]'
-                  }`}
-                onClick={() => handleMenuClick(item.section)}
-              >
-                {item.label}
-              </button>
-            ))}
+        <div className="flex justify-between items-center w-full md:max-w-[1200px] mx-auto">
+          <div className="flex items-center">
+            <DoorLoopLogo color={isScrolled ? "blue" : "white"} />
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center ml-12 space-x-8">
+              {menuItems.map((item) => (
+                <button
+                  key={item.label}
+                  className={`transition-colors font-medium ${isScrolled ? 'text-[#2F3E83] hover:text-[#00C48C]' : 'text-white hover:text-[#00C48C]'
+                    }`}
+                  onClick={() => handleMenuClick(item.section)}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
 
-        <div className="flex items-center">
-          {/* Desktop Demo Button */}
-          <button className="hidden lg:block bg-[#01cc74] text-white px-6 py-2 rounded-md font-medium hover:bg-[#00b27f] transition-colors">
-            Request A Demo
-          </button>
+          <div className="flex items-center">
+            {/* Desktop Demo Button */}
+            <button className="hidden lg:block bg-[#01cc74] text-white px-6 py-2 rounded-md font-medium hover:bg-[#00b27f] transition-colors">
+              Request A Demo
+            </button>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMenuOpen(true)}
-            className={`lg:hidden ${isScrolled ? 'text-[#2F3E83]' : 'text-white'}`}
-            aria-label="Open menu"
-          >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMenuOpen(true)}
+              className={`lg:hidden ${isScrolled ? 'text-[#2F3E83]' : 'text-white'}`}
+              aria-label="Open menu"
             >
-              <path
-                d="M4 6H20M4 12H20M4 18H20"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            </svg>
-          </button>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M4 6H20M4 12H20M4 18H20"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -160,8 +162,11 @@ export default function Navigation() {
               </button>
             </div>
           </div>
+
         </div>
       )}
+
     </>
+
   );
 } 
