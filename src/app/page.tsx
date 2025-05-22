@@ -7,6 +7,7 @@ import PropertyManagement from './components/PropertyManagement';
 import FeaturesSection from './components/FeaturesSection';
 import FeatureCard from './components/FeatureCard';
 import SupportSection from './components/SupportSection';
+import PromotionalSection from './components/PromotionalSection';
 import TestimonialsSection from './components/TestimonialsSection';
 import FAQSection from './components/FAQSection';
 import FooterSection from './components/FooterSection';
@@ -74,6 +75,7 @@ export default function Page() {
             <FeatureCard key={index} {...card} />
           ))}
           <SupportSection />
+          <PromotionalSection />
           <TestimonialsSection />
           <FAQSection />
           <FooterSection />
