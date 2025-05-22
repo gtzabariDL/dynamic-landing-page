@@ -10,6 +10,7 @@ import SupportSection from './components/SupportSection';
 import TestimonialsSection from './components/TestimonialsSection';
 import FAQSection from './components/FAQSection';
 import FooterSection from './components/FooterSection';
+import { AppScriptsLauncher } from './scripts/appScriptsLauncher';
 
 const featureCards = [
   {
@@ -61,21 +62,23 @@ const featureCards = [
 export default function Page() {
 
   return (
-    <div className="flex flex-col justify-start items-start w-full">
-      <Navigation />
-      <div className="w-full pt-[56px]">
-        <HeroSection />
-        <MediaFeatures />
-        <PropertyManagement />
-        <FeaturesSection />
-        {featureCards.map((card, index) => (
-          <FeatureCard key={index} {...card} />
-        ))}
-        <SupportSection />
-        <TestimonialsSection />
-        <FAQSection />
-        <FooterSection />
+    <AppScriptsLauncher>
+      <div className="flex flex-col justify-start items-start w-full">
+        <Navigation />
+        <div className="w-full pt-[56px]">
+          <HeroSection />
+          <MediaFeatures />
+          <PropertyManagement />
+          <FeaturesSection />
+          {featureCards.map((card, index) => (
+            <FeatureCard key={index} {...card} />
+          ))}
+          <SupportSection />
+          <TestimonialsSection />
+          <FAQSection />
+          <FooterSection />
+        </div>
       </div>
-    </div>
+    </AppScriptsLauncher>
   );
 }
