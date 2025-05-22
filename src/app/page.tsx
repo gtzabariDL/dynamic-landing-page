@@ -59,20 +59,23 @@ const featureCards = [
 ];
 
 export default function Page() {
+
   return (
     <div className="flex flex-col justify-start items-start w-full">
       <Navigation />
-      <HeroSection />
-      <MediaFeatures />
-      <PropertyManagement />
-      <FeaturesSection />
-      {featureCards.map((card, index) => (
-        <FeatureCard key={index} {...card} />
-      ))}
-      <SupportSection />
-      <TestimonialsSection />
-      <FAQSection />
-      <FooterSection />
+      <div className="w-full pt-[56px]">
+        <HeroSection />
+        <MediaFeatures />
+        <PropertyManagement />
+        <FeaturesSection />
+        {featureCards.map((card, index) => (
+          <FeatureCard key={index} {...card} />
+        ))}
+        <SupportSection />
+        <TestimonialsSection />
+        <FAQSection />
+        <FooterSection />
+      </div>
     </div>
   );
 }
