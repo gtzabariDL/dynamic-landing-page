@@ -1,3 +1,4 @@
+import Image from 'next/image';
 
 interface DoorLoopLogoProps {
     width?: number;
@@ -8,7 +9,7 @@ interface DoorLoopLogoProps {
 export const DoorLoopLogo = ({ width = 120, height = 32, color = "blue" }: DoorLoopLogoProps) => {
     if (color === "white") {
         return (
-            <img
+            <Image
                 alt="DoorLoop Logo"
                 width={width}
                 height={height}
@@ -16,9 +17,8 @@ export const DoorLoopLogo = ({ width = 120, height = 32, color = "blue" }: DoorL
             />
         )
     }
-
     return (
-        <img
+        <Image
             alt="DoorLoop Logo"
             width={width}
             height={height}

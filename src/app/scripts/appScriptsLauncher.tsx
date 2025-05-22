@@ -4,8 +4,12 @@ import { EventHelmet } from "./eventHelmet";
 
 declare global {
   interface Window {
-    gtag?: any;
-    posthog?: any;
+    gtag?: unknown;
+    posthog?: {
+      onFeatureFlags: (callback: () => void) => void;
+      isFeatureEnabled: (feature: string) => boolean;
+      startSessionRecording: () => void;
+    };
   }
 }
 
@@ -40,10 +44,10 @@ const startSessionRecording = () => {
     window.posthog.onFeatureFlags(() => {
       const forceRecordingSession = FORCE_RECORDING_PATHS.some((x) => window.location.href.includes(x));
       if (
-        window.posthog.isFeatureEnabled(PosthogFeatureFlagKeysEnum.ALLOW_RECORDING_SESSIONS) ||
+        window.posthog?.isFeatureEnabled(PosthogFeatureFlagKeysEnum.ALLOW_RECORDING_SESSIONS) ||
         forceRecordingSession
       ) {
-        window.posthog.startSessionRecording();
+        window.posthog?.startSessionRecording();
       }
     });
   }
