@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { DoorLoopLogo } from './DoorLoopLogo';
 import { useState } from 'react';
+
 const reviewPlatforms = [
   { src: 'softwareAdvice.svg', alt: 'Software Advice' },
   { src: 'capterra.svg', alt: 'Capterra' },
