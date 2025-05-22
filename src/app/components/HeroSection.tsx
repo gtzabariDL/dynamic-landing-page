@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { DoorLoopLogo } from './DoorLoopLogo';
+import { useState } from 'react';
 const reviewPlatforms = [
   { src: 'softwareAdvice.svg', alt: 'Software Advice' },
   { src: 'capterra.svg', alt: 'Capterra' },
@@ -8,6 +9,12 @@ const reviewPlatforms = [
 ];
 
 export default function HeroSection() {
+  const [email, setEmail] = useState('');
+  const onRequestDemo = () => {
+    window.open(`https://demo.doorloop.com/demo/additional-info?email=${email}`);
+  };
+
+
   return (
     <section className="flex-grow flex-col flex items-center justify-center bg-[#2F3E83] px-4 py-8 w-full h-[98vh]">
       <div className="flex items-center justify-center mb-6">
@@ -32,12 +39,14 @@ export default function HeroSection() {
             className="text-gray-400 mr-3 ml-1"
           />
           <input
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             type="email"
             placeholder="Your Email"
             className="w-full outline-none text-gray-400 text-base placeholder:text-gray-400"
           />
         </div>
-        <button className="w-full md:w-52 md:px-8 h-14 bg-[#01cc74] text-white py-2 rounded-md md:rounded-l-none md:rounded-r-md font-medium shadow hover:bg-[#00b27f] transition-colors whitespace-nowrap">
+        <button onClick={onRequestDemo} className="w-full md:w-52 md:px-8 h-14 bg-[#01cc74] text-white py-2 rounded-md md:rounded-l-none md:rounded-r-md font-medium shadow hover:bg-[#00b27f] transition-colors whitespace-nowrap">
           Request a Demo
         </button>
       </div>
