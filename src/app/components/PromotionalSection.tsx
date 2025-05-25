@@ -3,7 +3,7 @@ import Image from 'next/image';
 export default function PromotionalSection() {
     return (
 
-        <section className="pl-[7%] px-[5%] py-12 md:py-20 w-full" >
+        <section className="pl-[7%] px-[5%] py-12 md:py-20 w-full bg-white" >
             <div className="max-w-7xl mx-auto bg-[#2B3674]  text-white px-6 md:px-16 py-14 relative md:py-28 rounded-lg">
                 <div className="flex flex-col md:flex-row items-center justify-between">
                     {/* Content */}
