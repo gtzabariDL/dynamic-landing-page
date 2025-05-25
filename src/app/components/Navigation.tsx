@@ -52,7 +52,7 @@ export default function Navigation() {
 
   return (
     <>
-      <nav className={`w-full px-4 lg:px-8 py-3 fixed top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md border-b border-gray-200' : 'bg-[#24367320]'
+      <nav className={`w-full px-4 lg:px-8 py-3 fixed top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md border-b border-gray-200' : 'bg-[#2F3E83] md:bg-transparent'
         }`}>
         <div className="flex justify-between items-center w-full md:max-w-[1200px] mx-auto">
           <div className="flex items-center">
