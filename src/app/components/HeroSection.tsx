@@ -15,9 +15,17 @@ export default function HeroSection() {
     window.open(`https://demo.doorloop.com/demo/additional-info?email=${email}`);
   };
 
+  const basePath = process.env.NODE_ENV === 'production' ? '/dynamic-landing-page' : '';
+  const backgroundStyle = {
+    backgroundImage: `url(${basePath}/hero-background.svg)`
+  };
+
   return (
     <section className="relative flex-grow flex-col flex items-center justify-center px-4 py-8 w-full h-[98vh] bg-[#2F3E83] md:bg-transparent">
-      <div className="fixed top-0 left-0 w-full h-[98vh] bg-[url('/hero-background.svg')] bg-no-repeat bg-cover -z-10 hidden md:block md:opacity-90" />
+      <div
+        className="fixed top-0 left-0 w-full h-[98vh] bg-no-repeat bg-cover -z-10 hidden md:block md:opacity-90"
+        style={backgroundStyle}
+      />
       <div className="relative z-10 w-full h-full flex flex-col items-center justify-center">
         <div className="flex items-center justify-center mb-6">
           <DoorLoopLogo color="white" width={200} height={54} />
