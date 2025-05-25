@@ -1,14 +1,7 @@
 "use client"
-import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
+
 import Navigation from './components/Navigation';
-export const dynamicConfig = 'force-static';
-
-// Dynamic imports for all major components
-const HeroSection = dynamic(() => import('./components/HeroSection'), {
-  loading: () => <div className="animate-pulse bg-[#2F3E83] h-screen"></div>
-});
-
+import HeroSection from './components/HeroSection';
 import MediaFeatures from './components/MediaFeatures';
 import PropertyManagement from './components/PropertyManagement';
 import FeaturesSection from './components/FeaturesSection';
@@ -68,50 +61,23 @@ const featureCards = [
 ];
 
 export default function Page() {
-
   return (
     <AppScriptsLauncher>
       <div className="flex flex-col justify-start items-start w-full">
         <Navigation />
         <div className="w-full pt-[56px]">
-          <Suspense fallback={<div className="animate-pulse bg-[#2F3E83] h-screen"></div>}>
-            <HeroSection />
-          </Suspense>
-
-          <Suspense fallback={<div className="animate-pulse bg-gray-100 h-96"></div>}>
-            <MediaFeatures />
-          </Suspense>
-
-          <Suspense fallback={<div className="animate-pulse bg-white h-96"></div>}>
-            <PropertyManagement />
-          </Suspense>
-
-          <Suspense fallback={<div className="animate-pulse bg-gray-100 h-96"></div>}>
-            <FeaturesSection />
-            {featureCards.map((card, index) => (
-              <FeatureCard key={index} {...card} />
-            ))}
-          </Suspense>
-
-          <Suspense fallback={<div className="animate-pulse bg-white h-96"></div>}>
-            <SupportSection />
-          </Suspense>
-
-          <Suspense fallback={<div className="animate-pulse bg-gray-100 h-96"></div>}>
-            <PromotionalSection />
-          </Suspense>
-
-          <Suspense fallback={<div className="animate-pulse bg-white h-96"></div>}>
-            <TestimonialsSection />
-          </Suspense>
-
-          <Suspense fallback={<div className="animate-pulse bg-gray-100 h-96"></div>}>
-            <FAQSection />
-          </Suspense>
-
-          <Suspense fallback={<div className="animate-pulse bg-gray-50 h-96"></div>}>
-            <FooterSection />
-          </Suspense>
+          <HeroSection />
+          <MediaFeatures />
+          <PropertyManagement />
+          <FeaturesSection />
+          {featureCards.map((card, index) => (
+            <FeatureCard key={index} {...card} />
+          ))}
+          <SupportSection />
+          <PromotionalSection />
+          <TestimonialsSection />
+          <FAQSection />
+          <FooterSection />
         </div>
       </div>
     </AppScriptsLauncher>
