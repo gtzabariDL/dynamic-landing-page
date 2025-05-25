@@ -16,19 +16,18 @@ export default function HeroSection() {
   };
 
   const basePath = process.env.NODE_ENV === 'production' ? '/dynamic-landing-page' : '';
-  // const backgroundStyle = {
-  //   backgroundImage: `url(${basePath}/hero-background.webp)`,
-  //   backgroundSize: 'cover',
-  //   backgroundPosition: 'center',
-  // };
+  const backgroundStyle = {
+    backgroundImage: `url(${basePath}/hero-background.webp)`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  };
 
-  // md:bg-transparent
   return (
-    <section className="relative flex-grow flex-col flex items-center justify-center px-4 py-8 w-full h-[98vh] bg-[#2F3E83] ">
-      {/* <div
+    <section className="relative flex-grow flex-col flex items-center justify-center px-4 py-8 w-full h-[98vh] bg-[#2F3E83] md:bg-transparent">
+      <div
         className="fixed top-0 left-0 w-full h-[98vh] bg-no-repeat -z-10 hidden md:block md:opacity-90"
         style={backgroundStyle}
-      /> */}
+      />
       <div className="relative z-10 w-full h-full flex flex-col items-center justify-center">
         <div className="flex items-center justify-center mb-6">
           <DoorLoopLogo color="white" width={200} height={54} />
