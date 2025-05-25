@@ -241,7 +241,7 @@ const dataFaqItems = [
     answer: (
       <>
         <p>
-          Yes. If you're using another software or even a spreadsheet, our migration team will transfer your current properties, units, tenants, owners, leases, and vendors into DoorLoop.
+          Yes. If you&apos;re using another software or even a spreadsheet, our migration team will transfer your current properties, units, tenants, owners, leases, and vendors into DoorLoop.
         </p>
       </>
     )
@@ -277,7 +277,7 @@ const dataFaqItems = [
     answer: (
       <>
         <p className="mb-4">
-          You can expect updates at least monthly. The best part is that they're done automatically for you; there's no need to download or install anything.
+          You can expect updates at least monthly. The best part is that they&apos;re done automatically for you; there&apos;s no need to download or install anything.
         </p>
         <p>
           We also accept feature suggestions and prioritize them based on demand. So please, keep them coming!
