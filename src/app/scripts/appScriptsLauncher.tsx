@@ -55,17 +55,17 @@ const startSessionRecording = () => {
 
 export const AppScriptsLauncher = ({ children }: PropsWithChildren<unknown>) => {
   return (
-    // <HelmetProvider>
-    //   <EventHelmet
-    //     scriptSrc={"posthog.js"}
-    //     onScriptLoad={() => {
-    //       startSessionRecording();
-    //     }}
-    //   >
-    //     <script src="posthog.js" async></script>
-    //   </EventHelmet>
-    //   <GoogleTagScript />
-    { children }
-    // </HelmetProvider>
+    <HelmetProvider>
+      <EventHelmet
+        scriptSrc={"posthog.js"}
+        onScriptLoad={() => {
+          startSessionRecording();
+        }}
+      >
+        <script src="posthog.js" async></script>
+      </EventHelmet>
+      <GoogleTagScript />
+      {children}
+    </HelmetProvider>
   )
 };
