@@ -17,7 +17,7 @@ export default function HeroSection() {
 
   const basePath = process.env.NODE_ENV === 'production' ? '/dynamic-landing-page' : '';
   const backgroundStyle = {
-    backgroundImage: `url(${basePath}/hero-background.svg)`
+    backgroundImage: `url(${basePath}/hero-background.png)`
   };
 
   return (
