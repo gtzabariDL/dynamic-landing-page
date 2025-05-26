@@ -2,7 +2,7 @@
 
 URL="https://gtzabaridl.github.io/dynamic-landing-page/"
 THRESHOLD=85
-ATTEMPTS=5
+ATTEMPTS=10
 
 echo "🔍 Running Lighthouse $ATTEMPTS times on $URL"
 for i in $(seq 1 $ATTEMPTS); do
@@ -18,6 +18,9 @@ for i in $(seq 1 $ATTEMPTS); do
   SCORE=$(node -pe "require('./report-$i.json').categories.performance.score * 100")
 
   echo "➡️ Score #$i: $SCORE"
+
+  # Clean up the report file
+  rm report-$i.json
 
   if (( $(echo "$SCORE < $THRESHOLD" | bc -l) )); then
     echo "❌ Score below threshold ($THRESHOLD). Exiting."
