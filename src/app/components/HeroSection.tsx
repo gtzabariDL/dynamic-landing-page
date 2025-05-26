@@ -1,3 +1,5 @@
+'use client'
+
 import Image from 'next/image';
 import { DoorLoopLogo } from './DoorLoopLogo';
 import { useState } from 'react';
@@ -33,8 +35,8 @@ export default function HeroSection() {
           <DoorLoopLogo color="white" width={200} height={54} />
         </div>
 
-        <h1 className="text-white text-4xl md:text-5xl text-center font-normal mb-6">
-          The <span className="font-bold">Highest-Rated</span> Property Management Software
+        <h1 className="text-white text-4xl text-center font-normal mb-6">
+          The Highest-Rated Property Management Software
         </h1>
 
         <span className="text-center text-white max-w-3xl text-base md:text-lg">
