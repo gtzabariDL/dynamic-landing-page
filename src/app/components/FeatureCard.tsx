@@ -20,8 +20,6 @@ export default function FeatureCard({
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
-  console.log('imageSrc', imageSrc);
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
