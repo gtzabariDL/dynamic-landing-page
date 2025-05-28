@@ -61,7 +61,9 @@ export const AppScriptsLauncher = ({ children }: PropsWithChildren<unknown>) => 
         onScriptLoad={() => {
           startSessionRecording();
         }}
-      />
+      >
+        <script src="posthog.js" async></script>
+      </EventHelmet>
       <GoogleTagScript />
       {children}
     </HelmetProvider>
