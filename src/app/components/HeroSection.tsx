@@ -29,6 +29,17 @@ export default function HeroSection() {
     }
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      // Create a synthetic form event
+      const formEvent = {
+        preventDefault: () => {},
+      } as React.FormEvent;
+      handleSubmit(formEvent);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -96,6 +107,7 @@ export default function HeroSection() {
                 <input
                   value={email}
                   onChange={handleEmailChange}
+                  onKeyDown={handleKeyDown}
                   type="email"
                   placeholder="Your Email"
                   className="w-full outline-none text-gray-700 text-base placeholder:text-gray-400 h-10"
