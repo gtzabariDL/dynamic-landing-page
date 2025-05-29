@@ -22,7 +22,7 @@ export default function PropertyManagement() {
 
   return (
     <section className="flex-grow flex-col md:flex-row flex items-start justify-between bg-white py-10 w-full">
-      <MaxWidthContainer className="flex flex-col md:flex-row items-start justify-between space-y-6 md:space-y-0">
+      <MaxWidthContainer className="flex flex-col md:flex-row items-start md:items-stretch justify-between space-y-6 md:space-y-0">
         {/* Left side - Image */}
         <div className="relative hidden md:block">
           <Image
@@ -35,38 +35,40 @@ export default function PropertyManagement() {
         </div>
 
         {/* Right side - Content */}
-        <div className="w-full md:pl-16 flex flex-col">
-          <div className="text-[#A8A8A8] text-sm font-bold mb-2">
-            IF IT HAS A DOOR, YOU CAN MANAGE IT WITH DOORLOOP
-          </div>
+        <div className="flex-1  md:pl-16 flex flex-col justify-between md:self-stretch">
+          <div className="flex-1">
+            <div className="text-[#A8A8A8] text-sm font-bold mb-2">
+              IF IT HAS A DOOR, YOU CAN MANAGE IT WITH DOORLOOP
+            </div>
 
-          <div className="text-black text-4xl font-bold mb-12">
-            Manage any property.
-            <br />
-            Anytime, anywhere.
-          </div>
+            <div className="text-black text-[25px] sm:text-4xl font-semibold mb-12">
+              Manage any property.
+              <br />
+              Anytime, anywhere.
+            </div>
 
-          <div className="flex flex-wrap gap-3 mb-8">
-            {Object.keys(propertyTypes).map((type) => (
-              <button
-                key={type}
-                onClick={() => setSelectedType(type as PropertyType)}
-                className={`cursor-pointer text-sm rounded-lg font-bold p-4 transition-colors ${
-                  selectedType === type
-                    ? 'bg-[#1665d8] text-white'
-                    : 'bg-[#EDEDED] text-[#182C4C] hover:bg-[#1665d8] hover:text-white'
-                }`}
-              >
-                {type}
-              </button>
-            ))}
-          </div>
+            <div className="flex flex-wrap gap-3 mb-8">
+              {Object.keys(propertyTypes).map((type) => (
+                <button
+                  key={type}
+                  onClick={() => setSelectedType(type as PropertyType)}
+                  className={`cursor-pointer text-sm rounded-lg font-bold p-4 transition-colors ${
+                    selectedType === type
+                      ? 'bg-[#1665d8] text-white'
+                      : 'bg-[#EDEDED] text-[#182C4C] hover:bg-[#1665d8] hover:text-white'
+                  }`}
+                >
+                  {type}
+                </button>
+              ))}
+            </div>
 
-          <p className="text-gray-700 text-lg mb-6 md:mb-12">
-            {selectedType
-              ? propertyTypes[selectedType]
-              : "DoorLoop's property management software helps manage, grow, and automate hundreds of thousands of properties."}
-          </p>
+            <p className="text-gray-700 text-lg mb-6 md:mb-12">
+              {selectedType
+                ? propertyTypes[selectedType]
+                : "DoorLoop's property management software helps manage, grow, and automate hundreds of thousands of properties."}
+            </p>
+          </div>
 
           <Button dialogId="request-demo">Request A Demo</Button>
         </div>

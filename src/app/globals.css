@@ -1,5 +1,18 @@
 @import 'tailwindcss';
 
+@theme {
+  --breakpoint-xs: 480px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+  
+  --font-family-sans: system-ui, -apple-system, 'Segoe UI', 'Roboto', 'Ubuntu', 'Cantarell', 'Noto Sans', sans-serif;
+  
+  --animate-scroll: scroll 30s linear infinite;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -22,7 +35,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-family-sans);
 }
 
 @keyframes scroll {
@@ -36,5 +49,5 @@ body {
 }
 
 .animate-scroll {
-  animation: scroll 30s linear infinite;
+  animation: var(--animate-scroll);
 }

@@ -26,22 +26,22 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative flex-grow flex-col flex items-center justify-center px-4 py-8 w-full h-[98vh] bg-[#2F3E83] md:bg-transparent">
+    <section className="relative flex-grow flex-col flex items-center justify-center px-4 py-8 w-full md:h-[100vh] bg-[#2F3E83] md:bg-transparent">
       <div
         className="fixed top-0 left-0 w-full h-[98vh] bg-no-repeat -z-10 hidden md:block md:opacity-90"
         style={backgroundStyle}
       />
-      <div className="relative z-10 w-full h-full flex flex-col items-center justify-center">
+      <div className="relative z-10 w-full h-full flex flex-col items-center justify-center pt-14 sm:pt-0">
         <MaxWidthContainer className="h-full flex flex-col items-center justify-center text-center">
-          <div className="flex items-center justify-center mb-6">
+          <div className="items-center justify-center mb-6 hidden sm:flex">
             <DoorLoopLogo color="white" width={200} height={54} />
           </div>
 
-          <h1 className="text-white text-4xl text-center font-normal mb-6">
+          <h1 className="text-white text-[28px] md:text-[42px] text-center font-bold leading-none">
             The Highest-Rated Property Management Software
           </h1>
 
-          <span className="text-center text-white max-w-3xl text-base md:text-lg">
+          <span className="text-center mt-6 mb-14 md:mb-6 text-white max-w-4xl text-[16px] xs:text-[20px]">
             Save 15 hours a month, put your rental portfolio on autopilot and make accounting a
             breeze.
           </span>
@@ -72,7 +72,7 @@ export default function HeroSection() {
             </button>
           </div>
 
-          <div className="flex flex-col md:flex-row justify-center items-center w-full max-w-sm md:max-w-full space-y-2 mt-6 space-x-5">
+          <div className="flex flex-col md:flex-row justify-center items-center w-full max-w-sm md:max-w-full space-y-2 mt-14 space-x-5">
             <Image
               className="dark:invert"
               src={`${basePath}/saleIcon.svg`}
@@ -82,7 +82,7 @@ export default function HeroSection() {
               priority={false}
               loading="lazy"
             />
-            <span className="text-white text-center text-sm font-normal mt-2">
+            <span className="text-white text-center text-[16px] font-normal mt-4 mb-6">
               A fresh path to real growth. Get one month free + zero onboarding fees on all annual
               plans. Hurry—offer ends <span className="font-bold">Friday May 23rd</span>.
             </span>
