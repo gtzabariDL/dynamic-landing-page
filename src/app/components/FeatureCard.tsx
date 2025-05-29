@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { Button } from './Button';
@@ -10,7 +12,13 @@ interface FeatureCardProps {
   imageSrc: string;
 }
 
-export default function FeatureCard({ icon, title, description, features, imageSrc }: FeatureCardProps) {
+export default function FeatureCard({
+  icon,
+  title,
+  description,
+  features,
+  imageSrc,
+}: FeatureCardProps) {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -35,10 +43,7 @@ export default function FeatureCard({ icon, title, description, features, imageS
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="bg-[#ECEEF5] pl-[7%] px-[5%] py-12 md:py-20 w-full"
-    >
+    <section ref={sectionRef} className="bg-[#ECEEF5] pl-[7%] px-[5%] py-12 md:py-20 w-full">
       <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row items-center justify-between gap-10">
         {/* Left side - Content */}
         <div className="w-full md:w-1/2 flex flex-col space-y-5 max-w-[560px]">
@@ -51,9 +56,7 @@ export default function FeatureCard({ icon, title, description, features, imageS
           <h2 className="text-2xl md:text-3xl font-bold text-[#333333]">{title}</h2>
 
           {/* Description */}
-          <p className="text-[#333333] text-base md:text-lg leading-relaxed">
-            {description}
-          </p>
+          <p className="text-[#333333] text-base md:text-lg leading-relaxed">{description}</p>
 
           {/* Bullet list */}
           <ul className="text-[#333333] space-y-4">
@@ -66,28 +69,23 @@ export default function FeatureCard({ icon, title, description, features, imageS
           </ul>
 
           {/* CTA button */}
-          <Button>Request A Demo</Button>
+          <Button dialogId="request-demo">Request A Demo</Button>
         </div>
 
         {/* Right side - Image */}
         <div className="w-full md:w-1/2 flex justify-center md:justify-end">
           <div
             className={`md:transition-all md:duration-700 transform
-              ${isVisible
-                ? 'md:opacity-100 md:translate-x-0'
-                : 'md:opacity-0 md:translate-x-20 md:invisible'
+              ${
+                isVisible
+                  ? 'md:opacity-100 md:translate-x-0'
+                  : 'md:opacity-0 md:translate-x-20 md:invisible'
               }`}
           >
-            <Image
-              src={imageSrc}
-              alt={title}
-              width={560}
-              height={380}
-              loading="lazy"
-            />
+            <Image src={imageSrc} alt={title} width={560} height={380} loading="lazy" />
           </div>
         </div>
       </div>
     </section>
   );
-} 
+}

@@ -3,10 +3,18 @@
 import { useState, useEffect } from 'react';
 import { DoorLoopLogo } from './DoorLoopLogo';
 import Image from 'next/image';
+import { useOpenDialog } from '../providers/DialogProvider';
+import { Button } from './Button';
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const openDialog = useOpenDialog();
+
+  const handleRequestDemo = () => {
+    openDialog('request-demo');
+    setIsMenuOpen(false); // Close mobile menu if open
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,7 +46,7 @@ export default function Navigation() {
 
         window.scrollTo({
           top: offsetPosition,
-          behavior: 'smooth'
+          behavior: 'smooth',
         });
       }
     }, 300);
@@ -47,23 +55,31 @@ export default function Navigation() {
   const menuItems = [
     { label: 'Features', section: 'features' },
     { label: 'Testimonials', section: 'testimonials' },
-    { label: 'FAQs', section: 'faqs' }
+    { label: 'FAQs', section: 'faqs' },
   ];
 
   return (
     <>
-      <nav className={`w-full px-4 lg:px-8 py-3 fixed top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md border-b border-gray-200' : 'bg-[#2F3E83] md:bg-transparent'
-        }`}>
+      <nav
+        className={`w-full px-4 lg:px-8 py-3 fixed top-0 z-40 transition-all duration-300 ${
+          isScrolled
+            ? 'bg-white shadow-md border-b border-gray-200'
+            : 'bg-[#2F3E83] md:bg-transparent'
+        }`}
+      >
         <div className="flex justify-between items-center w-full md:max-w-[1200px] mx-auto">
           <div className="flex items-center">
-            <DoorLoopLogo color={isScrolled ? "blue" : "white"} />
+            <DoorLoopLogo color={isScrolled ? 'blue' : 'white'} />
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center ml-12 space-x-8">
               {menuItems.map((item) => (
                 <button
                   key={item.label}
-                  className={`transition-colors font-medium ${isScrolled ? 'text-[#2F3E83] hover:text-[#00C48C]' : 'text-white hover:text-[#00C48C]'
-                    }`}
+                  className={`transition-colors font-medium ${
+                    isScrolled
+                      ? 'text-[#2F3E83] hover:text-[#00C48C]'
+                      : 'text-white hover:text-[#00C48C]'
+                  }`}
                   onClick={() => handleMenuClick(item.section)}
                 >
                   {item.label}
@@ -74,9 +90,12 @@ export default function Navigation() {
 
           <div className="flex items-center">
             {/* Desktop Demo Button */}
-            <button className="hidden lg:block bg-[#01cc74] text-white px-6 py-2 rounded-md font-medium hover:bg-[#00b27f] transition-colors">
+            <Button
+              dialogId="request-demo"
+              className="hidden lg:block bg-[#01cc74] text-white whitespace-nowrap px-6 py-2 rounded-md font-medium hover:bg-[#00b27f] transition-colors"
+            >
               Request A Demo
-            </button>
+            </Button>
 
             {/* Mobile Menu Button */}
             <button
@@ -105,7 +124,7 @@ export default function Navigation() {
 
       {/* Menu Overlay */}
       {isMenuOpen && (
-        <div className="fixed inset-0 bg-white z-50">
+        <div className="fixed inset-0 bg-white z-40">
           <div className="flex flex-col h-full">
             {/* Header */}
             <div className="flex justify-between items-center px-4 py-3">
@@ -141,10 +160,7 @@ export default function Navigation() {
             <div className="flex-1 px-4 py-6">
               <div className="space-y-6">
                 {menuItems.map((item) => (
-                  <div
-                    key={item.label}
-                    className="py-3 border-b border-white/20"
-                  >
+                  <div key={item.label} className="py-3 border-b border-white/20">
                     <button
                       className="text-[#2F3E83] text-lg w-full text-left"
                       onClick={() => handleMenuClick(item.section)}
@@ -158,16 +174,16 @@ export default function Navigation() {
 
             {/* Demo Button */}
             <div className="px-4 py-6">
-              <button className="w-full bg-[#00C48C] text-white py-4 rounded-md font-medium hover:bg-[#00b27f] transition-colors">
-                Get A Demo
+              <button
+                onClick={handleRequestDemo}
+                className="w-full bg-[#00C48C] text-white py-4 rounded-md font-medium hover:bg-[#00b27f] transition-colors"
+              >
+                Request A Demo
               </button>
             </div>
           </div>
-
         </div>
       )}
-
     </>
-
   );
-} 
+}

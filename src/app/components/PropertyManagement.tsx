@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import { Button } from './Button';
 import { useState } from 'react';
@@ -5,10 +7,13 @@ import { useState } from 'react';
 type PropertyType = 'Residential' | 'Commercial' | 'Student Housing' | 'HOA';
 
 const propertyTypes: Record<PropertyType, string> = {
-  Residential: "Easily manage your residential units from anywhere in the world including single-family, multi-family, condos, apartments, and much more.",
-  Commercial: "Grow your commercial portfolio with the easiest software to manage your retail, office, industrial, shopping centers, parking, & more.",
-  "Student Housing": "Effortlessly manage your leases with multiple renters whether it's on or off-campus from dorms, apartments, and more.",
-  HOA: "Efficiently manage your residents, owners, renters, communities, and associations using the top-rated software available online."
+  Residential:
+    'Easily manage your residential units from anywhere in the world including single-family, multi-family, condos, apartments, and much more.',
+  Commercial:
+    'Grow your commercial portfolio with the easiest software to manage your retail, office, industrial, shopping centers, parking, & more.',
+  'Student Housing':
+    "Effortlessly manage your leases with multiple renters whether it's on or off-campus from dorms, apartments, and more.",
+  HOA: 'Efficiently manage your residents, owners, renters, communities, and associations using the top-rated software available online.',
 };
 
 export default function PropertyManagement() {
@@ -34,7 +39,8 @@ export default function PropertyManagement() {
         </div>
 
         <div className="text-black text-4xl font-bold mb-12">
-          Manage any property.<br />
+          Manage any property.
+          <br />
           Anytime, anywhere.
         </div>
 
@@ -43,10 +49,11 @@ export default function PropertyManagement() {
             <button
               key={type}
               onClick={() => setSelectedType(type as PropertyType)}
-              className={`cursor-pointer text-sm rounded-lg font-bold p-4 transition-colors ${selectedType === type
-                ? 'bg-[#1665d8] text-white'
-                : 'bg-[#EDEDED] text-[#182C4C] hover:bg-[#1665d8] hover:text-white'
-                }`}
+              className={`cursor-pointer text-sm rounded-lg font-bold p-4 transition-colors ${
+                selectedType === type
+                  ? 'bg-[#1665d8] text-white'
+                  : 'bg-[#EDEDED] text-[#182C4C] hover:bg-[#1665d8] hover:text-white'
+              }`}
             >
               {type}
             </button>
@@ -54,11 +61,13 @@ export default function PropertyManagement() {
         </div>
 
         <p className="text-gray-700 text-lg mb-6 md:mb-12">
-          {selectedType ? propertyTypes[selectedType] : 'DoorLoop\'s property management software helps manage, grow, and automate hundreds of thousands of properties.'}
+          {selectedType
+            ? propertyTypes[selectedType]
+            : "DoorLoop's property management software helps manage, grow, and automate hundreds of thousands of properties."}
         </p>
 
-        <Button>Request A Demo</Button>
+        <Button dialogId="request-demo">Request A Demo</Button>
       </div>
     </section>
   );
-} 
+}
