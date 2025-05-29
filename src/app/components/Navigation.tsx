@@ -5,6 +5,7 @@ import { DoorLoopLogo } from './DoorLoopLogo';
 import Image from 'next/image';
 import { useOpenDialog } from '../providers/DialogProvider';
 import { Button } from './Button';
+import { MaxWidthContainer } from './layouts/MaxWidthContainer';
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -61,13 +62,13 @@ export default function Navigation() {
   return (
     <>
       <nav
-        className={`w-full px-4 lg:px-8 py-3 fixed top-0 z-40 transition-all duration-300 ${
+        className={`w-full py-3 fixed top-0 z-40 transition-all duration-300 ${
           isScrolled
             ? 'bg-white shadow-md border-b border-gray-200'
             : 'bg-[#2F3E83] md:bg-transparent'
         }`}
       >
-        <div className="flex justify-between items-center w-full md:max-w-[1200px] mx-auto">
+        <MaxWidthContainer className="flex justify-between items-center">
           <div className="flex items-center">
             <DoorLoopLogo color={isScrolled ? 'blue' : 'white'} />
             {/* Desktop Navigation */}
@@ -119,7 +120,7 @@ export default function Navigation() {
               </svg>
             </button>
           </div>
-        </div>
+        </MaxWidthContainer>
       </nav>
 
       {/* Menu Overlay */}

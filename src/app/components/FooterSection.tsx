@@ -1,11 +1,12 @@
 'use client';
 
 import { Button } from './Button';
+import { MaxWidthContainer } from './layouts/MaxWidthContainer';
 
 export default function FooterSection() {
   return (
-    <section className="flex flex-col items-center justify-center bg-[#2F3E83] w-full text-white px-4 py-12 md:py-16">
-      <div className="w-full max-w-4xl mx-auto flex flex-col items-center">
+    <section className="flex flex-col items-center justify-center bg-[#2F3E83] w-full text-white py-12 md:py-16">
+      <MaxWidthContainer className="flex flex-col items-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">Request a Demo</h2>
         <p className="text-center text-base md:text-lg mb-8">
           Ask us as many questions as you like to see if we are the right fit.
@@ -45,7 +46,7 @@ export default function FooterSection() {
             Manage your Cookie Preferences
           </button>
         </div>
-      </div>
+      </MaxWidthContainer>
     </section>
   );
 }

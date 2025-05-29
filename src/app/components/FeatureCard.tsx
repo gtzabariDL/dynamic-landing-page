@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { Button } from './Button';
+import { MaxWidthContainer } from './layouts/MaxWidthContainer';
 
 interface FeatureCardProps {
   icon: string;
@@ -43,8 +44,8 @@ export default function FeatureCard({
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-[#ECEEF5] pl-[7%] px-[5%] py-12 md:py-20 w-full">
-      <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row items-center justify-between gap-10">
+    <section ref={sectionRef} className="bg-[#ECEEF5] py-12 md:py-20 w-full">
+      <MaxWidthContainer className="flex flex-col md:flex-row items-center justify-between gap-10">
         {/* Left side - Content */}
         <div className="w-full md:w-1/2 flex flex-col space-y-5 max-w-[560px]">
           {/* Icon */}
@@ -85,7 +86,7 @@ export default function FeatureCard({
             <Image src={imageSrc} alt={title} width={560} height={380} loading="lazy" />
           </div>
         </div>
-      </div>
+      </MaxWidthContainer>
     </section>
   );
 }
