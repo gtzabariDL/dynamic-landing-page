@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect } from 'react';
 import Navigation from './components/Navigation';
 import HeroSection from './components/HeroSection';
 import MediaFeatures from './components/MediaFeatures';
@@ -13,7 +12,6 @@ import TestimonialsSection from './components/TestimonialsSection';
 import FAQSection from './components/FAQSection';
 import FooterSection from './components/FooterSection';
 import { AppScriptsLauncher } from './scripts/appScriptsLauncher';
-import { trackPageView } from './utils/analytics';
 
 const featureCards = [
   {
@@ -67,11 +65,6 @@ const featureCards = [
 ];
 
 export default function Page() {
-  useEffect(() => {
-    // Track page view when the landing page loads
-    trackPageView();
-  }, []);
-
   return (
     <AppScriptsLauncher>
       <div className="flex flex-col justify-start items-start w-full">

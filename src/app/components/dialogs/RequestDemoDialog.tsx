@@ -4,7 +4,8 @@ import React, { useState } from 'react';
 import UIDialog from '../ui/UIDialog';
 import { useDialog } from '../../providers/DialogProvider';
 import { DoorLoopLogo } from '../DoorLoopLogo';
-import { trackEmailBegan, trackLeadCreated } from '../../utils/analytics';
+import { trackEmailBegan } from '../../utils/analytics';
+import { navigateToDemoForm } from '../../utils/navigation';
 
 interface RequestDemoDialogProps {
   onClose: VoidFunction;
@@ -21,13 +22,7 @@ export default function RequestDemoDialog({ onClose }: RequestDemoDialogProps) {
     e.preventDefault();
     if (!email.trim()) return;
 
-    // Track lead creation before redirecting
-    trackLeadCreated();
-
-    // Open external demo URL with email parameter
-    window.open(`https://demo.doorloop.com/demo/additional-info?email=${email}`);
-
-    // Close the dialog and reset form
+    navigateToDemoForm(email);
     onClose();
     setEmail('');
     setHasTrackedEmailBegan(false);

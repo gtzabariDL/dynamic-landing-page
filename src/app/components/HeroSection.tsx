@@ -4,7 +4,8 @@ import Image from 'next/image';
 import { DoorLoopLogo } from './DoorLoopLogo';
 import { useState } from 'react';
 import { MaxWidthContainer } from './layouts/MaxWidthContainer';
-import { trackEmailBegan, trackLeadCreated } from '../utils/analytics';
+import { trackEmailBegan } from '../utils/analytics';
+import { navigateToDemoForm } from '../utils/navigation';
 
 const reviewPlatforms = [
   { src: 'softwareAdvice.svg', alt: 'Software Advice', width: 120, height: 40 },
@@ -46,11 +47,7 @@ export default function HeroSection() {
     setIsSubmitting(true);
 
     try {
-      // Track lead creation before redirecting
-      trackLeadCreated();
-
-      // Open external demo URL with email parameter
-      window.open(`https://demo.doorloop.com/demo/additional-info?email=${email}`);
+      navigateToDemoForm(email);
 
       // Reset form on success
       setEmail('');

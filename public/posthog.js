@@ -52,8 +52,8 @@ posthog.init("phc_HUjc1K4MXKGgoZ3Vr0CKpDFq61qk5O0zTdKM7fmEWoe", {
       ph.debug();
     }
 
-    ph.capture("visited_demo_form_page");
-    ph.capture("demo_form_first_step_loaded");
+    ph.capture("visited_landing_page");
+    ph.capture("Pageview")
 
     const email = getQueryParam("email");
     const currentDistinctId = ph.get_distinct_id();

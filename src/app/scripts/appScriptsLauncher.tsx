@@ -2,18 +2,6 @@ import type { PropsWithChildren } from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { EventHelmet } from './eventHelmet';
 
-declare global {
-  interface Window {
-    gtag?: unknown;
-    posthog?: {
-      onFeatureFlags: (callback: () => void) => void;
-      isFeatureEnabled: (feature: string) => boolean;
-      startSessionRecording: () => void;
-    };
-    Intercom?: (action: string, data?: Record<string, unknown>) => void;
-  }
-}
-
 const GoogleTagScript = () => (
   <Helmet>
     <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-KLSVFF2"></script>
