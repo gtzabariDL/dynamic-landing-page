@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { DoorLoopLogo } from './DoorLoopLogo';
 import { useState } from 'react';
 import { MaxWidthContainer } from './layouts/MaxWidthContainer';
+import { trackEmailBegan, trackLeadCreated } from '../utils/analytics';
 
 const reviewPlatforms = [
   { src: 'softwareAdvice.svg', alt: 'Software Advice', width: 120, height: 40 },
@@ -14,8 +15,40 @@ const reviewPlatforms = [
 
 export default function HeroSection() {
   const [email, setEmail] = useState('');
-  const onRequestDemo = () => {
-    window.open(`https://demo.doorloop.com/demo/additional-info?email=${email}`);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [hasTrackedEmailBegan, setHasTrackedEmailBegan] = useState(false);
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newEmail = e.target.value;
+    setEmail(newEmail);
+
+    // Track email began when user starts typing (only once)
+    if (newEmail.length > 0 && !hasTrackedEmailBegan) {
+      trackEmailBegan();
+      setHasTrackedEmailBegan(true);
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    setIsSubmitting(true);
+
+    try {
+      // Track lead creation before redirecting
+      trackLeadCreated();
+
+      // Open external demo URL with email parameter
+      window.open(`https://demo.doorloop.com/demo/additional-info?email=${email}`);
+
+      // Reset form on success
+      setEmail('');
+      setHasTrackedEmailBegan(false);
+    } catch {
+      // Handle any errors silently
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const basePath = process.env.NODE_ENV === 'production' ? '/dynamic-landing-page' : '';
@@ -46,31 +79,40 @@ export default function HeroSection() {
             breeze.
           </span>
 
-          <div className="flex flex-col md:flex-row items-center justify-center w-full max-w-2xl space-y-2 md:space-y-0 md:my-12 ">
-            <div className="flex items-center w-full md:w-80 bg-white rounded-md md:rounded-md md:rounded-r-none px-3 py-2 shadow-sm ">
-              <Image
-                src={`${basePath}/email-icon.svg`}
-                alt="Email"
-                width={24}
-                height={24}
-                className="text-gray-400 mr-3 ml-1"
-                priority={false}
-              />
-              <input
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                type="email"
-                placeholder="Your Email"
-                className="w-full outline-none text-gray-400 text-base placeholder:text-gray-400 h-10"
-              />
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col md:flex-row items-center justify-center w-full max-w-2xl space-y-2 md:space-y-0 md:my-12"
+          >
+            <div className="flex flex-col w-full md:w-80">
+              <div className="flex items-center w-full bg-white rounded-md md:rounded-md md:rounded-r-none px-3 py-2 shadow-sm">
+                <Image
+                  src={`${basePath}/email-icon.svg`}
+                  alt="Email"
+                  width={24}
+                  height={24}
+                  className="text-gray-400 mr-3 ml-1"
+                  priority={false}
+                />
+                <input
+                  value={email}
+                  onChange={handleEmailChange}
+                  type="email"
+                  placeholder="Your Email"
+                  className="w-full outline-none text-gray-700 text-base placeholder:text-gray-400 h-10"
+                  required
+                />
+              </div>
             </div>
             <button
-              onClick={onRequestDemo}
-              className="w-full md:w-52 md:px-8 h-14 bg-[#01cc74] text-white py-2 rounded-md md:rounded-l-none md:rounded-r-md font-medium shadow hover:bg-[#00b27f] transition-colors whitespace-nowrap"
+              type="submit"
+              disabled={isSubmitting}
+              className={`w-full md:w-52 md:px-8 h-14 text-white py-2 rounded-md md:rounded-l-none md:rounded-r-md font-medium shadow transition-colors whitespace-nowrap ${
+                isSubmitting ? 'bg-gray-400 cursor-not-allowed' : 'bg-[#01cc74] hover:bg-[#00b27f]'
+              }`}
             >
-              Request a Demo
+              {isSubmitting ? 'Submitting...' : 'Request a Demo'}
             </button>
-          </div>
+          </form>
 
           <div className="flex flex-col md:flex-row justify-center items-center w-full max-w-sm md:max-w-full space-y-2 mt-14 space-x-5">
             <Image

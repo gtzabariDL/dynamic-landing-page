@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import UIDialog from '../ui/UIDialog';
 import { useDialog } from '../../providers/DialogProvider';
 import { DoorLoopLogo } from '../DoorLoopLogo';
+import { trackEmailBegan, trackLeadCreated } from '../../utils/analytics';
 
 interface RequestDemoDialogProps {
   onClose: VoidFunction;
@@ -12,6 +13,7 @@ interface RequestDemoDialogProps {
 export default function RequestDemoDialog({ onClose }: RequestDemoDialogProps) {
   const { isDialogOpen } = useDialog();
   const [email, setEmail] = useState('');
+  const [hasTrackedEmailBegan, setHasTrackedEmailBegan] = useState(false);
 
   const isOpen = isDialogOpen('request-demo');
 
@@ -19,16 +21,27 @@ export default function RequestDemoDialog({ onClose }: RequestDemoDialogProps) {
     e.preventDefault();
     if (!email.trim()) return;
 
-    // Open external demo URL with email parameter, same as HeroSection
+    // Track lead creation before redirecting
+    trackLeadCreated();
+
+    // Open external demo URL with email parameter
     window.open(`https://demo.doorloop.com/demo/additional-info?email=${email}`);
 
     // Close the dialog and reset form
     onClose();
     setEmail('');
+    setHasTrackedEmailBegan(false);
   };
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
+    const newEmail = e.target.value;
+    setEmail(newEmail);
+
+    // Track email began when user starts typing (only once)
+    if (newEmail.length > 0 && !hasTrackedEmailBegan) {
+      trackEmailBegan();
+      setHasTrackedEmailBegan(true);
+    }
   };
 
   const header = (
