@@ -61,17 +61,20 @@ export default function HeroSection() {
 
   const basePath = process.env.NODE_ENV === 'production' ? '/dynamic-landing-page' : '';
   const backgroundStyle = {
-    backgroundImage: `url(${basePath}/hero-background.webp)`,
+    backgroundImage: `url(${basePath}/hero-background.png)`,
     backgroundSize: 'cover',
-    backgroundPosition: 'center',
+    backgroundPosition: 'center center',
+    backgroundRepeat: 'no-repeat',
+    backgroundAttachment: 'fixed',
   };
 
   return (
     <section className="relative flex-grow flex-col flex items-center justify-center px-4 py-8 w-full md:h-[100vh] bg-[#2F3E83] md:bg-transparent">
       <div
-        className="fixed top-0 left-0 w-full h-[98vh] bg-no-repeat -z-10 hidden md:block md:opacity-90"
+        className="fixed top-0 left-0 w-full h-[100vh] -z-10 hidden md:block md:opacity-90"
         style={backgroundStyle}
       />
+      <div className="fixed top-0 left-0 w-full h-[100vh] bg-blue-500/20 -z-10 hidden md:block" />
       <div className="relative z-10 w-full h-full flex flex-col items-center justify-center pt-14 sm:pt-0">
         <MaxWidthContainer className="h-full flex flex-col items-center justify-center text-center">
           <div className="items-center justify-center mb-6 hidden sm:flex">
