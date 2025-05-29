@@ -77,7 +77,7 @@ function getQueryParam(paramName) {
   try {
     var urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(paramName) || null;
-  } catch (err) {
+  } catch (e) {
     var match = new RegExp("[?&]" + paramName + "=([^&]+)").exec(window.location.search);
     return match ? decodeURIComponent(match[1]) : null;
   }

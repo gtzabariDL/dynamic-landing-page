@@ -13,6 +13,7 @@ import TestimonialsSection from './components/TestimonialsSection';
 import FAQSection from './components/FAQSection';
 import FooterSection from './components/FooterSection';
 import { AppScriptsLauncher } from './scripts/appScriptsLauncher';
+import { useDLMC } from './hooks/useDLMC';
 
 const featureCards = [
   {
@@ -66,6 +67,14 @@ const featureCards = [
 ];
 
 export default function Page() {
+  const { isInitialized, error } = useDLMC();
+
+  if (error) {
+    console.error('❌ DLMC Error:', error);
+  } else if (isInitialized) {
+    console.log('✅ DLMC: Successfully initialized');
+  }
+
   return (
     <AppScriptsLauncher>
       <div className="flex flex-col justify-start items-start w-full">
