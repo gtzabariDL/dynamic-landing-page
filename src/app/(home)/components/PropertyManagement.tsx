@@ -35,7 +35,7 @@ export default function PropertyManagement() {
         </div>
 
         {/* Right side - Content */}
-        <div className="flex-1  md:pl-16 flex flex-col justify-between md:self-stretch">
+        <div className="flex-1 mb-0 md:pb-[90px]  md:pl-16 flex flex-col justify-between md:self-stretch">
           <div className="flex-1">
             <div className="text-[#A8A8A8] text-sm font-bold mb-2">
               IF IT HAS A DOOR, YOU CAN MANAGE IT WITH DOORLOOP
