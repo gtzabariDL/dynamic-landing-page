@@ -10,7 +10,7 @@ export default function IntegrationsSection() {
         {/* Desktop Background - Centered behind content */}
         <div className="hidden  md:block absolute top-1/2  left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <Image
-            src="/integrations-background-web.png"
+            src="integrations-background-web.png"
             alt="Integration apps arranged in a circular pattern"
             width={1230}
             height={800}
@@ -51,7 +51,7 @@ export default function IntegrationsSection() {
             {/* Mobile Image - Below content */}
             <div className="block md:hidden w-full max-w-[500px] mx-auto mt-12">
               <Image
-                src="/integrations-background-mobile.png"
+                src="integrations-background-mobile.png"
                 alt="Integration apps arranged for mobile view"
                 width={500}
                 height={600}

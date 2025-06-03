@@ -3,17 +3,17 @@ import { MaxWidthContainer } from '../../../components/layouts/MaxWidthContainer
 
 const features = [
   {
-    icon: '/cutting-edge-tech.svg',
+    icon: 'cutting-edge-tech.svg',
     title: 'Cutting-edge technology',
     description: 'Simple, secure, and reliable software.',
   },
   {
-    icon: '/world-class-support.svg',
+    icon: 'world-class-support.svg',
     title: 'World-class support',
     description: 'US-based experts committed to your success.',
   },
   {
-    icon: '/free-educational-resources.svg',
+    icon: 'free-educational-resources.svg',
     title: 'Free educational resources',
     description: 'Thousands of videos, guides, and more.',
   },
@@ -57,7 +57,7 @@ export default function WhyDoorLoopSection() {
 
         <div className="flex justify-center">
           <Image
-            src="/why-doorloop.png"
+            src="why-doorloop.png"
             alt="DoorLoop Dashboard Interface"
             width={1450}
             height={540}
