@@ -49,7 +49,7 @@ export default function IntegrationsSection() {
             </Button>
 
             {/* Mobile Image - Below content */}
-            <div className="block md:hidden w-full max-w-[500px] mx-auto mt-12">
+            <div className="block md:hidden w-full max-w-[500px] mx-auto mt-12 mb-16">
               <Image
                 src="integrations-background-mobile.svg"
                 alt="Integration apps arranged for mobile view"
