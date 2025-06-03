@@ -13,7 +13,7 @@ export default function FooterSection() {
         </p>
         <Button
           dialogId="request-demo"
-          className="h-14 w-full md:w-96 bg-[#01CC74] text-white py-3 px-8 rounded-md font-medium shadow hover:bg-[#00b27f] transition-colors mb-12 md:mb-16 cursor-pointer"
+          className=" bg-[#01CC74] text-white rounded-md font-medium shadow hover:bg-[#00b27f] transition-colors mb-12 md:mb-16 cursor-pointer"
         >
           Request a Demo
         </Button>

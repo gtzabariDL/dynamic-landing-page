@@ -14,7 +14,7 @@ const mediaFeatures = [
 export default function MediaFeatures() {
   return (
     <section className="flex-grow flex-col flex items-center justify-center bg-white p-18 space-y-6 w-full md:py-20">
-      <MaxWidthContainer className="text-center">
+      <MaxWidthContainer className="text-center py-20">
         <div className="text-[#182c4c] font-semibold text-lg opacity-80">As seen on</div>
         <div className="grid grid-cols-2 md:flex md:flex-wrap justify-center items-center gap-8 mt-6">
           {mediaFeatures.map((platform, index) => {

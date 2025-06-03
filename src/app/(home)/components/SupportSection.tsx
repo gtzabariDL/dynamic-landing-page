@@ -8,11 +8,11 @@ export default function SupportSection() {
       <MaxWidthContainer className="flex flex-col-reverse md:flex-row items-start md:items-center justify-between gap-8 md:gap-12">
         <div className="flex justify-center md:justify-start flex-shrink-0">
           <Image
-            src="supportStats/supportStats.svg"
+            src="supportStats/supportStats.png"
             alt="Support Statistics"
             width={520}
             height={660}
-            className="w-auto h-auto max-w-full"
+            className="h-auto max-w-full"
           />
         </div>
 

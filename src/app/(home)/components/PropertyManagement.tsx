@@ -22,11 +22,11 @@ export default function PropertyManagement() {
 
   return (
     <section className="flex-grow flex-col md:flex-row flex items-start justify-between bg-white py-10 w-full">
-      <MaxWidthContainer className="flex flex-col md:flex-row items-start md:items-stretch justify-between space-y-6 md:space-y-0">
+      <MaxWidthContainer className="flex flex-col md:flex-row items-start md:items-stretch justify-between space-y-6 pb-20 md:space-y-0">
         {/* Left side - Image */}
         <div className="relative hidden md:block">
           <Image
-            src="manageAnyProperty.svg"
+            src="manageAnyProperty.png"
             alt="Property Management Dashboard"
             width={600}
             height={500}

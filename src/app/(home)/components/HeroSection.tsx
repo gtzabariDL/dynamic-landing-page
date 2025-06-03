@@ -128,7 +128,7 @@ export default function HeroSection() {
 
           <div className="flex flex-col md:flex-row justify-center items-center w-full max-w-sm md:max-w-full space-y-2 mt-14 space-x-5">
             <Image
-              className="dark:invert"
+              // className="dark:invert"
               src={`${basePath}/saleIcon.svg`}
               alt="Spring Sale Icon"
               width={120}

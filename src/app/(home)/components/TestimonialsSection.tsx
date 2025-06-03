@@ -39,13 +39,11 @@ export default function TestimonialsSection() {
       id="testimonials"
     >
       <MaxWidthContainer className="text-center">
-        <span className="text-[#A8A8A8] text-sm uppercase mb-4 font-bold">
+        <span className="text-[#A8A8A8] text-sm uppercase font-bold">
           THE #1 HIGHEST RATED PROPERTY MANAGEMENT SOFTWARE ONLINE
         </span>
-        <h2 className="text-3xl md:text-4xl font-bold text-[#333333] mb-16">
-          Trusted by hundreds of thousands
-          <br />
-          worldwide
+        <h2 className="text-3xl md:text-4xl font-bold text-[#333333] mb-16 mt-4">
+          Trusted by hundreds of thousands worldwide
         </h2>
       </MaxWidthContainer>
 
