@@ -22,8 +22,8 @@ const features = [
 export default function WhyDoorLoopSection() {
   return (
     <section className="relative bg-[#2F3E83] pt-32 w-full overflow-hidden">
-      <MaxWidthContainer>
-        <div className="text-center mb-12 md:mb-16">
+      <MaxWidthContainer className="px-0!">
+        <div className="text-center mb-12 md:mb-16 px-4 md:px-8 lg:px-4">
           {/* Main Heading */}
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
             Why DoorLoop?
@@ -38,7 +38,7 @@ export default function WhyDoorLoopSection() {
           </p>
         </div>
 
-        <div className="flex justify-center">
+        <div className="flex justify-center px-4 md:px-8 lg:px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
             {features.map((feature, index) => (
               <div key={index} className="flex gap-6">
@@ -57,11 +57,19 @@ export default function WhyDoorLoopSection() {
 
         <div className="flex justify-center">
           <Image
-            src="why-doorloop.png"
+            src="why-doorloop-web.png"
             alt="DoorLoop Dashboard Interface"
             width={1450}
             height={540}
-            className="-mt-16"
+            className="hidden md:block"
+            priority
+          />
+          <Image
+            src="why-doorloop-mobile.png"
+            alt="DoorLoop Dashboard Interface"
+            width={1450}
+            height={540}
+            className="block md:hidden"
             priority
           />
         </div>

@@ -5,12 +5,12 @@ import { ArrowRightIcon } from '@radix-ui/react-icons';
 
 export default function IntegrationsSection() {
   return (
-    <section className="relative  bg-white py-20 md:py-32 lg:py-40 w-full overflow-hidden">
-      <div className="mt-14">
+    <section className="relative  bg-white py-0 md:py-32 lg:py-40 w-full overflow-hidden">
+      <div className="md:mt-14">
         {/* Desktop Background - Centered behind content */}
         <div className="hidden  md:block absolute top-1/2  left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <Image
-            src="integrations-background-web.png"
+            src="integrations-background-web.svg"
             alt="Integration apps arranged in a circular pattern"
             width={1230}
             height={800}
@@ -20,7 +20,7 @@ export default function IntegrationsSection() {
         </div>
 
         {/* Content Overlay */}
-        <MaxWidthContainer className="relative z-10 pt-32">
+        <MaxWidthContainer className="relative z-10 md:pt-32">
           <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
             {/* Section Tag */}
             <div className="text-[#A8A8A8] text-sm font-bold mb-6 tracking-wide">
@@ -51,7 +51,7 @@ export default function IntegrationsSection() {
             {/* Mobile Image - Below content */}
             <div className="block md:hidden w-full max-w-[500px] mx-auto mt-12">
               <Image
-                src="integrations-background-mobile.png"
+                src="integrations-background-mobile.svg"
                 alt="Integration apps arranged for mobile view"
                 width={500}
                 height={600}
