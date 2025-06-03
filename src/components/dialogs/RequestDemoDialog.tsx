@@ -2,10 +2,12 @@
 
 import React, { useState } from 'react';
 import UIDialog from '../ui/UIDialog';
+import { UIErrorMessage } from '../ui/UIErrorMessage';
 import { useDialog } from '../../lib/providers/DialogProvider';
 import { DoorLoopLogo } from '../ui/DoorLoopLogo';
 import { trackEmailAttempt, trackEmailBegan } from '../../lib/utils/analytics';
 import { navigateToDemoForm } from '../../lib/utils/navigation';
+import { validateEmail, getErrorMessage } from '../../lib/utils/validation';
 
 interface RequestDemoDialogProps {
   onClose: VoidFunction;
@@ -15,25 +17,51 @@ export default function RequestDemoDialog({ onClose }: RequestDemoDialogProps) {
   const { isDialogOpen } = useDialog();
   const [email, setEmail] = useState('');
   const [hasTrackedEmailBegan, setHasTrackedEmailBegan] = useState(false);
+  const [error, setError] = useState<string>('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const isOpen = isDialogOpen('request-demo');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email.trim()) return;
+
+    if (!email.trim()) {
+      setError('Please enter your email address');
+      return;
+    }
 
     trackEmailAttempt();
-    navigateToDemoForm(email);
-    onClose();
-    setEmail('');
-    setHasTrackedEmailBegan(false);
+    setIsSubmitting(true);
+    setError('');
+
+    try {
+      const validation = await validateEmail(email.trim());
+
+      if (!validation.isValid) {
+        setError(getErrorMessage(validation.result));
+        setIsSubmitting(false);
+        return;
+      }
+
+      navigateToDemoForm(email);
+      onClose();
+      setEmail('');
+      setHasTrackedEmailBegan(false);
+    } catch {
+      setError('Something went wrong. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newEmail = e.target.value;
     setEmail(newEmail);
 
-    // Track email began when user starts typing (only once)
+    if (error) {
+      setError('');
+    }
+
     if (newEmail.length > 0 && !hasTrackedEmailBegan) {
       trackEmailBegan();
       setHasTrackedEmailBegan(true);
@@ -84,13 +112,19 @@ export default function RequestDemoDialog({ onClose }: RequestDemoDialogProps) {
             required
             autoFocus
           />
+          <UIErrorMessage message={error} variant="dialog" />
         </div>
 
         <button
           type="submit"
-          className="w-full bg-green-500 hover:bg-green-600 text-white font-medium py-3 px-4 rounded-md transition-colors duration-200"
+          disabled={isSubmitting}
+          className={`w-full font-medium py-3 px-4 rounded-md transition-colors duration-200 ${
+            isSubmitting
+              ? 'bg-gray-400 cursor-not-allowed text-white'
+              : 'bg-green-500 hover:bg-green-600 text-white'
+          }`}
         >
-          Continue
+          {isSubmitting ? 'Validating...' : 'Continue'}
         </button>
       </form>
     </UIDialog>

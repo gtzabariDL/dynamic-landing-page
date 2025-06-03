@@ -2,10 +2,12 @@
 
 import Image from 'next/image';
 import { DoorLoopLogo } from '../../../components/ui/DoorLoopLogo';
+import { UIErrorMessage } from '../../../components/ui/UIErrorMessage';
 import { useState } from 'react';
 import { MaxWidthContainer } from '../../../components/layouts/MaxWidthContainer';
 import { trackEmailAttempt, trackEmailBegan } from '../../../lib/utils/analytics';
 import { navigateToDemoForm } from '../../../lib/utils/navigation';
+import { validateEmail, getErrorMessage } from '../../../lib/utils/validation';
 
 const reviewPlatforms = [
   { src: 'softwareAdvice.svg', alt: 'Software Advice', width: 120, height: 40 },
@@ -18,12 +20,16 @@ export default function HeroSection() {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [hasTrackedEmailBegan, setHasTrackedEmailBegan] = useState(false);
+  const [error, setError] = useState<string>('');
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newEmail = e.target.value;
     setEmail(newEmail);
 
-    // Track email began when user starts typing (only once)
+    if (error) {
+      setError('');
+    }
+
     if (newEmail.length > 0 && !hasTrackedEmailBegan) {
       trackEmailBegan();
       setHasTrackedEmailBegan(true);
@@ -45,19 +51,28 @@ export default function HeroSection() {
     e.preventDefault();
 
     if (!email.trim()) {
+      setError('Please enter your email address');
       return;
     }
 
-    setIsSubmitting(true);
     trackEmailAttempt();
-    try {
-      navigateToDemoForm(email);
+    setIsSubmitting(true);
+    setError('');
 
-      // Reset form on success
+    try {
+      const validation = await validateEmail(email.trim());
+
+      if (!validation.isValid) {
+        setError(getErrorMessage(validation.result));
+        setIsSubmitting(false);
+        return;
+      }
+
+      navigateToDemoForm(email);
       setEmail('');
       setHasTrackedEmailBegan(false);
     } catch {
-      // Handle any errors silently
+      setError('Something went wrong. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -118,6 +133,7 @@ export default function HeroSection() {
                   required
                 />
               </div>
+              <UIErrorMessage message={error} variant="hero" />
             </div>
             <button
               type="submit"
