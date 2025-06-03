@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
-import { DialogProvider } from '../providers/DialogProvider';
-import { dialogsConfig } from '../components/dialogs/dialogs-config';
+import { dialogsConfig } from '../dialogs/dialogs-config';
+import { DialogProvider } from '../../lib/providers/DialogProvider';
 
 interface ClientLayoutProps {
   children: React.ReactNode;

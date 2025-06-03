@@ -1,8 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import { Button } from './Button';
-import { MaxWidthContainer } from './layouts/MaxWidthContainer';
+import { Button } from '../../../components/ui/Button';
+import { MaxWidthContainer } from '../../../components/layouts/MaxWidthContainer';
 
 export default function PromotionalSection() {
   return (

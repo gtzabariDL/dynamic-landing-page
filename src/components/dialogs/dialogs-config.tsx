@@ -1,4 +1,4 @@
-import { DialogConfig } from '../../providers/DialogProvider';
+import { DialogConfig } from '../../lib/providers/DialogProvider';
 import RequestDemoDialog from './RequestDemoDialog';
 
 export const dialogsConfig: DialogConfig[] = [

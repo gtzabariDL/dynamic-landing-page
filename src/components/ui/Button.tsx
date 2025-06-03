@@ -1,5 +1,5 @@
-import { useDialogTrigger } from '../hooks/useDialogTrigger';
-import { cn } from '../utils/component';
+import { useDialogTrigger } from '../../lib/hooks/useDialogTrigger';
+import { cn } from '../../lib/utils/component';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;

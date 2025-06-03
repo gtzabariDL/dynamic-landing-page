@@ -1,6 +1,6 @@
 'use client';
 
-import Navigation from './components/Navigation';
+import Navigation from '../../components/layouts/Navigation';
 import HeroSection from './components/HeroSection';
 import MediaFeatures from './components/MediaFeatures';
 import PropertyManagement from './components/PropertyManagement';
@@ -12,9 +12,9 @@ import WhyDoorLoopSection from './components/WhyDoorLoopSection';
 import PromotionalSection from './components/PromotionalSection';
 import TestimonialsSection from './components/TestimonialsSection';
 import FAQSection from './components/FAQSection';
-import FooterSection from './components/FooterSection';
-import { AppScriptsLauncher } from './scripts/appScriptsLauncher';
-import { useDLMC } from './hooks/useDLMC';
+import FooterSection from '../../components/layouts/FooterSection';
+import { AppScriptsLauncher } from '../../../scripts/appScriptsLauncher';
+import { useDLMC } from '../../lib/hooks/useDLMC';
 
 const featureCards = [
   {

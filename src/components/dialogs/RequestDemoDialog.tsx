@@ -2,10 +2,10 @@
 
 import React, { useState } from 'react';
 import UIDialog from '../ui/UIDialog';
-import { useDialog } from '../../providers/DialogProvider';
-import { DoorLoopLogo } from '../DoorLoopLogo';
-import { trackEmailBegan } from '../../utils/analytics';
-import { navigateToDemoForm } from '../../utils/navigation';
+import { useDialog } from '../../lib/providers/DialogProvider';
+import { DoorLoopLogo } from '../ui/DoorLoopLogo';
+import { trackEmailBegan } from '../../lib/utils/analytics';
+import { navigateToDemoForm } from '../../lib/utils/navigation';
 
 interface RequestDemoDialogProps {
   onClose: VoidFunction;

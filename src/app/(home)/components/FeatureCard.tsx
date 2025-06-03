@@ -2,8 +2,8 @@
 
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
-import { Button } from './Button';
-import { MaxWidthContainer } from './layouts/MaxWidthContainer';
+import { Button } from '../../../components/ui/Button';
+import { MaxWidthContainer } from '../../../components/layouts/MaxWidthContainer';
 
 interface FeatureCardProps {
   icon: string;

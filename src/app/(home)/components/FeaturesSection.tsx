@@ -1,4 +1,4 @@
-import { MaxWidthContainer } from './layouts/MaxWidthContainer';
+import { MaxWidthContainer } from '../../../components/layouts/MaxWidthContainer';
 
 export default function FeaturesSection() {
   return (

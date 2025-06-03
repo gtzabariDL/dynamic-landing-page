@@ -1,8 +1,7 @@
-import './globals.css';
+import '../styles/globals.css';
 import { Metadata } from 'next';
-import ClientLayout from './layouts/ClientLayout';
+import ClientLayout from '../components/layouts/ClientLayout';
 
-// These styles apply to every route in the application
 export const metadata: Metadata = {
   title: 'DoorLoop Property Management Software',
   description:

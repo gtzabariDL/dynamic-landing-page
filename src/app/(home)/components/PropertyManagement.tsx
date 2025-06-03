@@ -1,9 +1,9 @@
 'use client';
 
 import Image from 'next/image';
-import { Button } from './Button';
+import { Button } from '../../../components/ui/Button';
 import { useState } from 'react';
-import { MaxWidthContainer } from './layouts/MaxWidthContainer';
+import { MaxWidthContainer } from '../../../components/layouts/MaxWidthContainer';
 
 type PropertyType = 'Residential' | 'Commercial' | 'Student Housing' | 'HOA';
 

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { MaxWidthContainer } from './layouts/MaxWidthContainer';
+import { MaxWidthContainer } from '../../../components/layouts/MaxWidthContainer';
 
 interface FAQItem {
   question: string;

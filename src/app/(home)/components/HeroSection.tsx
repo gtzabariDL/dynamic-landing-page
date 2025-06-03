@@ -1,11 +1,11 @@
 'use client';
 
 import Image from 'next/image';
-import { DoorLoopLogo } from './DoorLoopLogo';
+import { DoorLoopLogo } from '../../../components/ui/DoorLoopLogo';
 import { useState } from 'react';
-import { MaxWidthContainer } from './layouts/MaxWidthContainer';
-import { trackEmailBegan } from '../utils/analytics';
-import { navigateToDemoForm } from '../utils/navigation';
+import { MaxWidthContainer } from '../../../components/layouts/MaxWidthContainer';
+import { trackEmailBegan } from '../../../lib/utils/analytics';
+import { navigateToDemoForm } from '../../../lib/utils/navigation';
 
 const reviewPlatforms = [
   { src: 'softwareAdvice.svg', alt: 'Software Advice', width: 120, height: 40 },

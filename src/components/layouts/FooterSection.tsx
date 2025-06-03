@@ -1,7 +1,7 @@
 'use client';
 
-import { Button } from './Button';
-import { MaxWidthContainer } from './layouts/MaxWidthContainer';
+import { Button } from '../ui/Button';
+import { MaxWidthContainer } from './MaxWidthContainer';
 
 export default function FooterSection() {
   return (

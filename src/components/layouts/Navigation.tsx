@@ -1,11 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { DoorLoopLogo } from './DoorLoopLogo';
+import { DoorLoopLogo } from '../ui/DoorLoopLogo';
 import Image from 'next/image';
-import { useOpenDialog } from '../providers/DialogProvider';
-import { Button } from './Button';
-import { MaxWidthContainer } from './layouts/MaxWidthContainer';
+import { Button } from '../ui/Button';
+import { MaxWidthContainer } from './MaxWidthContainer';
+import { useOpenDialog } from '../../lib/providers/DialogProvider';
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

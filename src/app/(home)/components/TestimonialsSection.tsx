@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { MaxWidthContainer } from './layouts/MaxWidthContainer';
+import { MaxWidthContainer } from '../../../components/layouts/MaxWidthContainer';
 
 const testimonials = [
   {
