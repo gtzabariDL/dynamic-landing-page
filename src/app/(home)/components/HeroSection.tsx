@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { DoorLoopLogo } from '../../../components/ui/DoorLoopLogo';
 import { useState } from 'react';
 import { MaxWidthContainer } from '../../../components/layouts/MaxWidthContainer';
-import { trackEmailBegan } from '../../../lib/utils/analytics';
+import { trackEmailAttempt, trackEmailBegan } from '../../../lib/utils/analytics';
 import { navigateToDemoForm } from '../../../lib/utils/navigation';
 
 const reviewPlatforms = [
@@ -44,8 +44,12 @@ export default function HeroSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    setIsSubmitting(true);
+    if (!email.trim()) {
+      return;
+    }
 
+    setIsSubmitting(true);
+    trackEmailAttempt();
     try {
       navigateToDemoForm(email);
 

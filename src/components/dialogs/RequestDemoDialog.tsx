@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import UIDialog from '../ui/UIDialog';
 import { useDialog } from '../../lib/providers/DialogProvider';
 import { DoorLoopLogo } from '../ui/DoorLoopLogo';
-import { trackEmailBegan } from '../../lib/utils/analytics';
+import { trackEmailAttempt, trackEmailBegan } from '../../lib/utils/analytics';
 import { navigateToDemoForm } from '../../lib/utils/navigation';
 
 interface RequestDemoDialogProps {
@@ -22,6 +22,7 @@ export default function RequestDemoDialog({ onClose }: RequestDemoDialogProps) {
     e.preventDefault();
     if (!email.trim()) return;
 
+    trackEmailAttempt();
     navigateToDemoForm(email);
     onClose();
     setEmail('');

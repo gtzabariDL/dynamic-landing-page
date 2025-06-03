@@ -1,4 +1,4 @@
-import { getUTMParameters, trackEmailAttempt, trackLeadCreated } from './analytics';
+import { getUTMParameters, trackLeadCreated } from './analytics';
 
 export const navigateToDemoForm = (email: string) => {
   if (typeof window === 'undefined') return;
@@ -13,7 +13,6 @@ export const navigateToDemoForm = (email: string) => {
   params.set('utm_content', utmParams.utm_content);
   params.set('utm_term', utmParams.utm_term);
 
-  trackEmailAttempt();
   trackLeadCreated(email);
   const redirectUrl = `https://demo.doorloop.com/demo/additional-info?${params.toString()}`;
 
