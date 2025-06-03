@@ -53,13 +53,19 @@ const ClickceaseScript = () => (
   <Helmet>
     <script type="text/javascript">
       {`
-        var script = document.createElement('script');
-        script.async = true; 
-        script.type = 'text/javascript';
-        var target = 'https://www.clickcease.com/monitor/stat.js';
-        script.src = target;
-        var elemClickCease = document.head;
-        elemClickCease.appendChild(script);
+        (function() {
+          try {
+            var script = document.createElement('script');
+            script.async = true;
+            script.type = 'text/javascript';
+            script.src = 'https://www.clickcease.com/monitor/stat.js';
+            
+            var head = document.head || document.getElementsByTagName('head')[0];
+            head.appendChild(script);
+          } catch (error) {
+            // Silent error handling
+          }
+        })();
       `}
     </script>
     <noscript>
@@ -72,11 +78,46 @@ const IntercomScript = () => (
   <Helmet>
     <script>
       {`
-        (function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/YOUR_INTERCOM_APP_ID';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(document.readyState==='complete'){l();}else if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
-        
-        window.Intercom('boot', {
-          app_id: 'YOUR_INTERCOM_APP_ID'
-        });
+        window.intercomSettings = {
+          app_id: "njbci459"
+        };
+      `}
+    </script>
+    <script>
+      {`
+        (function () {
+          var w = window;
+          var ic = w.Intercom;
+          if (typeof ic === "function") {
+            ic("reattach_activator");
+            ic("update", w.intercomSettings);
+          } else {
+            var d = document;
+            var i = function () {
+              i.c(arguments);
+            };
+            i.q = [];
+            i.c = function (args) {
+              i.q.push(args);
+            };
+            w.Intercom = i;
+            var l = function () {
+              var s = d.createElement("script");
+              s.type = "text/javascript";
+              s.async = true;
+              s.src = "https://widget.intercom.io/widget/njbci459";
+              var x = d.getElementsByTagName("script")[0];
+              x.parentNode.insertBefore(s, x);
+            };
+            if (document.readyState === "complete") {
+              l();
+            } else if (w.attachEvent) {
+              w.attachEvent("onload", l);
+            } else {
+              w.addEventListener("load", l, false);
+            }
+          }
+        })();
       `}
     </script>
   </Helmet>
