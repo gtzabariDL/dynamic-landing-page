@@ -8,6 +8,7 @@ import FeaturesSection from './components/FeaturesSection';
 import FeatureCard from './components/FeatureCard';
 import SupportSection from './components/SupportSection';
 import IntegrationsSection from './components/IntegrationsSection';
+import WhyDoorLoopSection from './components/WhyDoorLoopSection';
 import PromotionalSection from './components/PromotionalSection';
 import TestimonialsSection from './components/TestimonialsSection';
 import FAQSection from './components/FAQSection';
@@ -88,9 +89,10 @@ export default function Page() {
             <FeatureCard key={index} {...card} />
           ))}
           <SupportSection />
-          <IntegrationsSection />
           <PromotionalSection />
           <TestimonialsSection />
+          <IntegrationsSection />
+          <WhyDoorLoopSection />
           <FAQSection />
           <FooterSection />
         </div>

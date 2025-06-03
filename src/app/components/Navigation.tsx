@@ -93,7 +93,7 @@ export default function Navigation() {
             {/* Desktop Demo Button */}
             <Button
               dialogId="request-demo"
-              className="hidden lg:block bg-[#01cc74] text-white whitespace-nowrap px-6 py-2 rounded-md font-medium hover:bg-[#00b27f] transition-colors"
+              className="hidden lg:block bg-[#01cc74] text-white whitespace-nowrap rounded-md font-medium hover:bg-[#00b27f] transition-colors"
             >
               Request A Demo
             </Button>

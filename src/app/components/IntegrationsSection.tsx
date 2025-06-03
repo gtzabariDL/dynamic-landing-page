@@ -20,7 +20,7 @@ export default function IntegrationsSection() {
         </div>
 
         {/* Content Overlay */}
-        <MaxWidthContainer className="relative z-10">
+        <MaxWidthContainer className="relative z-10 pt-32">
           <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
             {/* Section Tag */}
             <div className="text-[#A8A8A8] text-sm font-bold mb-6 tracking-wide">
