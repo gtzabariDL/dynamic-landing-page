@@ -114,7 +114,7 @@ export default function HeroSection() {
             className="flex flex-col md:flex-row items-center justify-center w-full max-w-2xl space-y-2 md:space-y-0 md:my-12"
           >
             <div className="flex flex-col w-full md:w-80">
-              <div className="flex items-center w-full bg-white rounded-md md:rounded-md md:rounded-r-none px-3 py-2 shadow-sm">
+              <div className="flex relative items-center w-full bg-white rounded-md md:rounded-md md:rounded-r-none px-3 py-2 shadow-sm">
                 <Image
                   src={`${basePath}/email-icon.svg`}
                   alt="Email"
@@ -133,7 +133,6 @@ export default function HeroSection() {
                   required
                 />
               </div>
-              <UIErrorMessage message={error} variant="hero" />
             </div>
             <button
               type="submit"
@@ -145,6 +144,12 @@ export default function HeroSection() {
               {isSubmitting ? 'Submitting...' : 'Request a Demo'}
             </button>
           </form>
+
+          <UIErrorMessage
+            className=" w-full md:max-w-[525px] md:-mt-10 "
+            message={error}
+            variant="hero"
+          />
 
           <div className="flex flex-col md:flex-row justify-center items-center w-full max-w-sm md:max-w-full space-y-2 mt-14 space-x-5">
             <Image

@@ -4,6 +4,22 @@ import { Button } from '../ui/Button';
 import { MaxWidthContainer } from './MaxWidthContainer';
 
 export default function FooterSection() {
+  const handleCookiePreferences = () => {
+    document.cookie.split(';').forEach((cookie) => {
+      const eqPos = cookie.indexOf('=');
+      const name = eqPos > -1 ? cookie.substr(0, eqPos).trim() : cookie.trim();
+      document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;domain=${window.location.hostname}`;
+      document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;domain=.${window.location.hostname}`;
+      document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/`;
+    });
+
+    window.location.href = window.location.href.split('#')[0] + '#';
+
+    setTimeout(() => {
+      window.location.reload();
+    }, 100);
+  };
+
   return (
     <section className="flex flex-col items-center justify-center bg-[#2F3E83] w-full text-white py-12 md:py-16">
       <MaxWidthContainer className="flex flex-col items-center">
@@ -24,11 +40,21 @@ export default function FooterSection() {
 
           <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 text-[#ffffff]">
             <div className="flex items-center gap-2">
-              <a href="#" className="hover:text-white transition-colors">
+              <a
+                href="https://www.doorloop.com/legal/privacy"
+                className="hover:text-white transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Privacy Policy
               </a>
               <span className="text-[#ffffffcc]">|</span>
-              <a href="#" className="hover:text-white transition-colors">
+              <a
+                href="https://www.doorloop.com/legal/terms"
+                className="hover:text-white transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Terms of Service
               </a>
             </div>
@@ -42,7 +68,10 @@ export default function FooterSection() {
             </a>
           </div>
 
-          <button className="mt-4 text-[#ffffff] hover:text-white transition-colors cursor-pointer">
+          <button
+            onClick={handleCookiePreferences}
+            className="mt-4 text-[#ffffff] hover:text-white transition-colors cursor-pointer"
+          >
             Manage your Cookie Preferences
           </button>
         </div>

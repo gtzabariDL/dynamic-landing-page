@@ -8,6 +8,7 @@ import { DoorLoopLogo } from '../ui/DoorLoopLogo';
 import { trackEmailAttempt, trackEmailBegan } from '../../lib/utils/analytics';
 import { navigateToDemoForm } from '../../lib/utils/navigation';
 import { validateEmail, getErrorMessage } from '../../lib/utils/validation';
+import Image from 'next/image';
 
 interface RequestDemoDialogProps {
   onClose: VoidFunction;
@@ -77,11 +78,18 @@ export default function RequestDemoDialog({ onClose }: RequestDemoDialogProps) {
   const footer = (
     <div className="text-center">
       <p className="text-gray-400 text-sm mb-4">AS SEEN ON</p>
-      <div className="flex justify-center items-center gap-8 opacity-40">
-        <div className="text-gray-400 font-bold text-lg">abc</div>
-        <div className="text-gray-400 font-bold text-lg">CBS</div>
-        <div className="text-gray-400 font-bold text-lg">FOX NEWS</div>
-        <div className="text-gray-400 font-bold text-lg">NBC</div>
+      <div className="flex justify-center items-center gap-6 opacity-60">
+        <Image src="abc.svg" alt="ABC" width={48} height={48} className="h-8 w-auto" />
+        <Image src="cbs.svg" alt="CBS" width={48} height={48} className="h-8 w-auto" />
+        <Image
+          src="the-real-deal.svg"
+          alt="The Real Deal"
+          width={64}
+          height={32}
+          className="h-3 w-auto"
+        />
+        <Image src="fox-news.svg" alt="FOX News" width={48} height={48} className="h-8 w-auto" />
+        <Image src="nbc.svg" alt="NBC" width={48} height={48} className="h-8 w-auto" />
       </div>
     </div>
   );
