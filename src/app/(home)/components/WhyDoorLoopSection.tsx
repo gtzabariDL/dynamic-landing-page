@@ -69,7 +69,7 @@ export default function WhyDoorLoopSection() {
             alt="DoorLoop Dashboard Interface"
             width={1450}
             height={540}
-            className="block md:hidden"
+            className="block md:hidden -mt-20"
             priority
           />
         </div>
