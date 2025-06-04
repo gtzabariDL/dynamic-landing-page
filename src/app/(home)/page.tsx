@@ -15,6 +15,7 @@ import FAQSection from './components/FAQSection';
 import FooterSection from '../../components/layouts/FooterSection';
 import { AppScriptsLauncher } from '../../../scripts/appScriptsLauncher';
 import { useDLMC } from '../../lib/hooks/useDLMC';
+import { WelcomeOfferStaticBanner } from '../../components/banners/welcomeOffer/WelcomeOfferStaticBanner';
 
 const featureCards = [
   {
@@ -79,8 +80,9 @@ export default function Page() {
   return (
     <AppScriptsLauncher>
       <div className="flex flex-col justify-start items-start w-full">
-        <Navigation />
-        <div className="w-full pt-[56px]">
+        <WelcomeOfferStaticBanner />
+        <div className="relative w-full bg-white z-40">
+          <Navigation />
           <HeroSection />
           <MediaFeatures />
           <PropertyManagement />

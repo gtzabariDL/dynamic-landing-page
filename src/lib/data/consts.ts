@@ -1,0 +1,1 @@
+export const INITIAL_BANNER_HEIGHT = 475;

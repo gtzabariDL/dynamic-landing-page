@@ -1,37 +1,25 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { DoorLoopLogo } from '../ui/DoorLoopLogo';
 import Image from 'next/image';
 import { Button } from '../ui/Button';
 import { MaxWidthContainer } from './MaxWidthContainer';
 import { useOpenDialog } from '../../lib/providers/DialogProvider';
+import { useScrollPosition } from '../../lib/hooks/useScrollPosition';
+import { WelcomeOfferStickyBanner } from '../banners/welcomeOffer/WelcomeOfferStickyBanner';
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const openDialog = useOpenDialog();
+
+  const scrollY = useScrollPosition();
+  const isScrolled = scrollY > 0;
 
   const handleRequestDemo = () => {
     openDialog('request-demo');
-    setIsMenuOpen(false); // Close mobile menu if open
+    setIsMenuOpen(false);
   };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      setIsScrolled(scrollPosition > 0);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    // Initial check
-    handleScroll();
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
 
   const handleMenuClick = (section: string) => {
     setIsMenuOpen(false); // Close the menu
@@ -61,67 +49,71 @@ export default function Navigation() {
 
   return (
     <>
-      <nav
-        className={`w-full py-3 fixed top-0 z-40 transition-all duration-300 ${
-          isScrolled
-            ? 'bg-white shadow-md border-b border-gray-200'
-            : 'bg-[#2F3E83] md:bg-transparent'
-        }`}
-      >
-        <MaxWidthContainer className="flex justify-between items-center">
-          <div className="flex items-center">
-            <DoorLoopLogo color={isScrolled ? 'blue' : 'white'} />
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center ml-12 space-x-8">
-              {menuItems.map((item) => (
-                <button
-                  key={item.label}
-                  className={`transition-colors font-medium ${
-                    isScrolled
-                      ? 'text-[#2F3E83] hover:text-[#00C48C]'
-                      : 'text-white hover:text-[#00C48C]'
-                  }`}
-                  onClick={() => handleMenuClick(item.section)}
-                >
-                  {item.label}
-                </button>
-              ))}
+      <div className="sticky top-0 z-40">
+        <WelcomeOfferStickyBanner />
+
+        <nav
+          className={`w-full py-3 transition-all duration-300 ${
+            isScrolled
+              ? 'bg-white shadow-md border-b border-gray-200'
+              : 'bg-[#2F3E83] md:bg-transparent'
+          }`}
+        >
+          <MaxWidthContainer className="flex justify-between items-center">
+            <div className="flex items-center">
+              <DoorLoopLogo color={isScrolled ? 'blue' : 'white'} />
+              {/* Desktop Navigation */}
+              <div className="hidden lg:flex items-center ml-12 space-x-8">
+                {menuItems.map((item) => (
+                  <button
+                    key={item.label}
+                    className={`transition-colors font-medium ${
+                      isScrolled
+                        ? 'text-[#2F3E83] hover:text-[#00C48C]'
+                        : 'text-white hover:text-[#00C48C]'
+                    }`}
+                    onClick={() => handleMenuClick(item.section)}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
 
-          <div className="flex items-center">
-            {/* Desktop Demo Button */}
-            <Button
-              dialogId="request-demo"
-              className="hidden lg:block bg-[#01cc74] text-white whitespace-nowrap rounded-md font-medium hover:bg-[#00b27f] transition-colors"
-            >
-              Request A Demo
-            </Button>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMenuOpen(true)}
-              className={`lg:hidden ${isScrolled ? 'text-[#2F3E83]' : 'text-white'}`}
-              aria-label="Open menu"
-            >
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+            <div className="flex items-center">
+              {/* Desktop Demo Button */}
+              <Button
+                dialogId="request-demo"
+                className="hidden lg:block bg-[#01cc74] text-white whitespace-nowrap rounded-md font-medium hover:bg-[#00b27f] transition-colors"
               >
-                <path
-                  d="M4 6H20M4 12H20M4 18H20"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </button>
-          </div>
-        </MaxWidthContainer>
-      </nav>
+                Request A Demo
+              </Button>
+
+              {/* Mobile Menu Button */}
+              <button
+                onClick={() => setIsMenuOpen(true)}
+                className={`lg:hidden ${isScrolled ? 'text-[#2F3E83]' : 'text-white'}`}
+                aria-label="Open menu"
+              >
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M4 6H20M4 12H20M4 18H20"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </button>
+            </div>
+          </MaxWidthContainer>
+        </nav>
+      </div>
 
       {/* Menu Overlay */}
       {isMenuOpen && (

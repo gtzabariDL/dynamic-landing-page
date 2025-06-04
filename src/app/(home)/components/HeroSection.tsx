@@ -84,16 +84,17 @@ export default function HeroSection() {
     backgroundSize: 'cover',
     backgroundPosition: 'center center',
     backgroundRepeat: 'no-repeat',
-    backgroundAttachment: 'fixed',
+    backgroundAttachment: 'scroll',
   };
 
   return (
-    <section className="relative flex-grow flex-col flex items-center justify-center px-4 py-8 w-full md:h-[100vh] bg-[#2F3E83] md:bg-transparent">
+    <section className="relative flex-grow flex-col flex items-center justify-center px-4 py-8 w-full md:h-[100vh] bg-[#2F3E83] md:bg-transparent md:-mt-[58px] lg:-mt-20 overflow-hidden">
       <div
-        className="fixed top-0 left-0 w-full h-[100vh] -z-10 hidden md:block md:opacity-90"
+        className="absolute top-0 left-0 w-full h-full -z-10 hidden md:block md:opacity-90"
         style={backgroundStyle}
       />
-      <div className="fixed top-0 left-0 w-full h-[100vh] bg-blue-500/20 -z-10 hidden md:block" />
+      <div className="absolute top-0 left-0 w-full h-full bg-blue-500/20 -z-10 hidden md:block" />
+
       <div className="relative z-10 w-full h-full flex flex-col items-center justify-center pt-14 sm:pt-0">
         <MaxWidthContainer className="h-full flex flex-col items-center justify-center text-center">
           <div className="items-center justify-center mb-6 hidden sm:flex">
