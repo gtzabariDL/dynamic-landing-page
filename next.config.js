@@ -1,19 +1,28 @@
 /** @type {import('next').NextConfig} */
-const isProd = process.env.NODE_ENV === 'production';
-const repoName = 'dynamic-landing-page';
-
 const nextConfig = {
-  output: 'export',
-  images: {
-    unoptimized: true,
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    formats: ['image/webp'],
-    minimumCacheTTL: 60,
-  },
-  basePath: isProd ? `/${repoName}` : '',
-  assetPrefix: isProd ? `/${repoName}/` : '',
-  trailingSlash: true,
-}
+	reactStrictMode: false,
+	typescript: {
+		tsconfigPath: './tsconfig.build.json',
+	},
+	compiler: {
+		removeConsole: false,
+		reactRemoveProperties: true,
+	},
+	images: {
+		unoptimized: true,
+		remotePatterns: [
+			{
+				protocol: 'https',
+				hostname: 'api.microlink.io',
+				pathname: '**',
+			},
+		],
+	},
+	pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
+	output: 'export',
+	// basePath: process.env.NODE_ENV === 'production' ? '/dynamic-landing-page' : '',
+	// assetPrefix: process.env.NODE_ENV === 'production' ? '/dynamic-landing-page' : '',
+	// trailingSlash: true,
+};
 
-module.exports = nextConfig 
+export default nextConfig

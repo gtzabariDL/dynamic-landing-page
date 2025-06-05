@@ -12,7 +12,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <base href={process.env.NODE_ENV === 'production' ? '/dynamic-landing-page/' : '/'} />
+        <base href="/" />
       </head>
       <body suppressHydrationWarning>
         <ClientLayout>{children}</ClientLayout>

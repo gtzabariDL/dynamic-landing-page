@@ -121,12 +121,7 @@ export default function Navigation() {
           <div className="flex flex-col h-full">
             {/* Header */}
             <div className="flex justify-between items-center px-4 py-3">
-              <Image
-                src={`${process.env.NODE_ENV === 'production' ? '/dynamic-landing-page' : ''}/doorloopLogo.svg`}
-                alt="DoorLoop Logo"
-                width={120}
-                height={32}
-              />
+              <Image src="/doorloopLogo.svg" alt="DoorLoop Logo" width={120} height={32} />
               <button
                 onClick={() => setIsMenuOpen(false)}
                 className="text-[#2F3E83]"

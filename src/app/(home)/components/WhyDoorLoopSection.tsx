@@ -43,7 +43,7 @@ export default function WhyDoorLoopSection() {
             {features.map((feature, index) => (
               <div key={index} className="flex gap-6">
                 <div className="w-8 h-8 mt-1.5">
-                  <Image src={feature.icon} alt="" width={32} height={32} />
+                  <Image src={`/${feature.icon}`} alt="" width={32} height={32} />
                 </div>
 
                 <div className="flex flex-col">
@@ -57,7 +57,7 @@ export default function WhyDoorLoopSection() {
 
         <div className="flex justify-center">
           <Image
-            src="why-doorloop-web.png"
+            src="/why-doorloop-web.png"
             alt="DoorLoop Dashboard Interface"
             width={1450}
             height={540}
@@ -65,7 +65,7 @@ export default function WhyDoorLoopSection() {
             priority
           />
           <Image
-            src="why-doorloop-mobile.png"
+            src="/why-doorloop-mobile.png"
             alt="DoorLoop Dashboard Interface"
             width={1450}
             height={540}

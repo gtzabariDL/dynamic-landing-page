@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://doorloop.com
+
+# Sitemaps
+Sitemap: https://doorloop.com/sitemap.xml

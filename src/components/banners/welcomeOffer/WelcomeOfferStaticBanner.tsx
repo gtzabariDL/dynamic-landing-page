@@ -16,7 +16,7 @@ export const WelcomeOfferStaticBanner = () => {
           <MaxWidthContainer className="relative flex flex-col md:flex-row items-center justify-center h-full">
             <div className="flex items-center justify-center w-full">
               <Image
-                src="welcome-offer-banner.svg"
+                src="/welcome-offer-banner.svg"
                 alt="Welcome offer banner"
                 width={300}
                 height={350}
@@ -58,7 +58,7 @@ export const WelcomeOfferStaticBanner = () => {
             </div>
           </MaxWidthContainer>
           <Image
-            src="welcome-offer-banner-mobile-left.svg"
+            src="/welcome-offer-banner-mobile-left.svg"
             alt="Welcome offer banner"
             width={300}
             height={350}
@@ -66,7 +66,7 @@ export const WelcomeOfferStaticBanner = () => {
             priority
           />
           <Image
-            src="welcome-offer-banner-mobile-right.svg"
+            src="/welcome-offer-banner-mobile-right.svg"
             alt="Welcome offer banner"
             width={300}
             height={350}

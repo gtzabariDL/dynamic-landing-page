@@ -26,7 +26,7 @@ export default function PropertyManagement() {
         {/* Left side - Image */}
         <div className="relative hidden md:block">
           <Image
-            src="manageAnyProperty.png"
+            src="/manageAnyProperty.png"
             alt="Property Management Dashboard"
             width={600}
             height={500}

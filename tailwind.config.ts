@@ -1,5 +1,4 @@
-import type { Config } from 'tailwindcss';
-
+/* eslint-disable import/no-anonymous-default-export */
 export default {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -45,4 +44,4 @@ export default {
     },
   },
   plugins: [],
-} satisfies Config;
+};

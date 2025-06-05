@@ -78,7 +78,7 @@ export default function HeroSection() {
     }
   };
 
-  const basePath = process.env.NODE_ENV === 'production' ? '/dynamic-landing-page' : '';
+  const basePath = '';
   const backgroundStyle = {
     backgroundImage: `url(${basePath}/hero-background.png)`,
     backgroundSize: 'cover',
@@ -117,7 +117,7 @@ export default function HeroSection() {
             <div className="flex flex-col w-full md:w-80">
               <div className="flex relative items-center w-full bg-white rounded-md md:rounded-md md:rounded-r-none px-3 py-2 shadow-sm">
                 <Image
-                  src={`${basePath}/email-icon.svg`}
+                  src="/email-icon.svg"
                   alt="Email"
                   width={24}
                   height={24}
@@ -155,7 +155,7 @@ export default function HeroSection() {
           <div className="flex flex-col md:flex-row justify-center items-center w-full max-w-sm md:max-w-full space-y-2 mt-14 space-x-5">
             <Image
               // className="dark:invert"
-              src={`${basePath}/saleIcon.svg`}
+              src="/saleIcon.svg"
               alt="Spring Sale Icon"
               width={120}
               height={60}
@@ -173,7 +173,7 @@ export default function HeroSection() {
             {reviewPlatforms.map((platform) => (
               <Image
                 key={platform.alt}
-                src={`${basePath}/${platform.src}`}
+                src={`/${platform.src}`}
                 alt={platform.alt}
                 width={platform.width}
                 height={platform.height}

@@ -97,7 +97,7 @@ export default function TestimonialsSection() {
                   </p>
                   <div className="flex items-center gap-3">
                     <Image
-                      src={testimonial.image}
+                      src={`/${testimonial.image}`}
                       alt={testimonial.name}
                       width={48}
                       height={48}

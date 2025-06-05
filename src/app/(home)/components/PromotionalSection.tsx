@@ -48,7 +48,7 @@ export default function PromotionalSection() {
 
             {/* Image */}
             <Image
-              src="matt.svg"
+              src="/matt.svg"
               alt="Support Representative"
               width={400}
               height={400}
