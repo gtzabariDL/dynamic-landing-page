@@ -32,9 +32,7 @@ const nextConfig = {
 		optimizePackageImports: ['react-helmet-async', 'react-i18next'],
 	},
 	basePath: isProd ? `/${repoName}` : '',
-	assetPrefix: isProd ? `/${repoName}/` : '',
-	// basePath: process.env.NODE_ENV === 'production' ? '/dynamic-landing-page' : '',
-	// assetPrefix: process.env.NODE_ENV === 'production' ? '/dynamic-landing-page' : '',
+	assetPrefix: isProd ? `/${repoName}` : '',
 };
 
 export default nextConfig
