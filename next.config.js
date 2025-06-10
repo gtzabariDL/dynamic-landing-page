@@ -25,14 +25,14 @@ const nextConfig = {
 	
 	output: 'export',
 	trailingSlash: true,
+	basePath: isProd ? `/${repoName}` : '',
+	// assetPrefix: isProd ? `/${repoName}` : '',
 	// Performance optimizations
 	poweredByHeader: false,
 	compress: true,
 	experimental: {
 		optimizePackageImports: ['react-helmet-async', 'react-i18next'],
 	},
-	basePath: isProd ? `/${repoName}` : '',
-	assetPrefix: isProd ? `/${repoName}` : '',
 };
 
 export default nextConfig
