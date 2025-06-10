@@ -50,7 +50,7 @@ export default function FeatureCard({
         <div className="w-full md:w-1/2 flex flex-col space-y-5 max-w-[560px]">
           {/* Icon */}
           <div className="text-[#2F3E83]">
-            <Image src={`/${icon}`} alt={`${title} Icon`} width={32} height={32} />
+            <Image src={icon} alt={`${title} Icon`} width={32} height={32} />
           </div>
 
           {/* Heading */}
@@ -83,7 +83,7 @@ export default function FeatureCard({
                   : 'md:opacity-0 md:translate-x-20 md:invisible'
               }`}
           >
-            <Image src={`/${imageSrc}`} alt={title} width={560} height={380} loading="lazy" />
+            <Image src={imageSrc} alt={title} width={560} height={380} loading="lazy" />
           </div>
         </div>
       </MaxWidthContainer>

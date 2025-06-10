@@ -1,19 +1,27 @@
 import { INITIAL_BANNER_HEIGHT } from '../../../lib/data/consts';
 import { useScrollPosition } from '../../../lib/hooks/useScrollPosition';
-import { navigateToDemoForm } from '../../../lib/utils/navigation';
+import { trackLeadClickedBanner } from '../../../lib/utils/analytics';
 import { Button } from '../../ui/Button';
+// import { useVisitTracker } from '../../../lib/hooks/useVisitTracker';
 
 export const WelcomeOfferStickyBanner = () => {
+  // const { isFirstVisit } = useVisitTracker();
   const scrollY = useScrollPosition();
   const showTopBanner = scrollY > INITIAL_BANNER_HEIGHT;
 
+  const handleClick = () => {
+    trackLeadClickedBanner();
+  };
+
   return (
     <div
-      className={`w-full gap-12 px-4 md:px-8 flex items-center justify-between md:justify-center bg-[#1665D8] text-white overflow-hidden transition-all duration-300 ease-out ${
-        showTopBanner ? 'max-h-24 opacity-100 py-[22px]' : 'max-h-0 opacity-0'
+      className={`w-full gap-12 px-4 md:px-8 flex items-center justify-between md:justify-center bg-[#1665D8] text-white overflow-hidden ${
+        showTopBanner ? 'max-h-24 visible py-[22px]' : 'max-h-0 invisible py-0'
       }`}
       style={{
-        transform: showTopBanner ? 'translateY(0)' : 'translateY(-100%)',
+        transition: showTopBanner
+          ? 'max-height 300ms ease-out, visibility 300ms ease-out, padding 300ms ease-out'
+          : 'max-height 150ms ease-in, visibility 150ms ease-in, padding 150ms ease-in',
       }}
     >
       <div className="flex md:items-center flex-col md:flex-row">
@@ -27,7 +35,8 @@ export const WelcomeOfferStickyBanner = () => {
       </div>
       <Button
         className="text-[14px] px-2 py-0 whitespace-nowrap md:text-[20px] font-semibold"
-        onClick={() => navigateToDemoForm()}
+        dialogId="request-demo"
+        onClick={handleClick}
       >
         Claim Offer
       </Button>

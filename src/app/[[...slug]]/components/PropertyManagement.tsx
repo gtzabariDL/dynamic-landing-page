@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { Button } from '../../../components/ui/Button';
 import { useState } from 'react';
 import { MaxWidthContainer } from '../../../components/layouts/MaxWidthContainer';
+import { useScreenSize } from '../../../lib/hooks/useScreenSize';
 
 type PropertyType = 'Residential' | 'Commercial' | 'Student Housing' | 'HOA';
 
@@ -19,20 +20,23 @@ const propertyTypes: Record<PropertyType, string> = {
 
 export default function PropertyManagement() {
   const [selectedType, setSelectedType] = useState<PropertyType | null>(null);
+  const { isMedium } = useScreenSize();
 
   return (
     <section className="flex-grow flex-col md:flex-row flex items-start justify-between bg-white py-10 w-full">
       <MaxWidthContainer className="flex flex-col md:flex-row items-start md:items-stretch justify-between space-y-6 pb-20 md:space-y-0">
         {/* Left side - Image */}
-        <div className="relative hidden md:block">
-          <Image
-            src="/manageAnyProperty.png"
-            alt="Property Management Dashboard"
-            width={600}
-            height={500}
-            className="rounded-lg min-w-[600px] min-h-[400px]"
-          />
-        </div>
+        {isMedium && (
+          <div className="relative">
+            <Image
+              src="/manageAnyProperty.png"
+              alt="Property Management Dashboard"
+              width={600}
+              height={500}
+              className="rounded-lg min-w-[600px] min-h-[400px]"
+            />
+          </div>
+        )}
 
         {/* Right side - Content */}
         <div className="flex-1 mb-0 md:pb-[90px]  md:pl-16 flex flex-col justify-between md:self-stretch">

@@ -19,6 +19,7 @@ export const Button = ({
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (dialogId) {
+      onClick?.(e);
       triggerDialog();
     } else if (onClick) {
       onClick(e);
@@ -28,7 +29,8 @@ export const Button = ({
   const baseClasses = 'font-medium transition-colors cursor-pointer';
 
   const variantClasses = {
-    default: 'bg-[#01CC74] text-white p-4 rounded-md shadow hover:bg-[#00b27f] w-36 h-14 text-sm',
+    default:
+      'bg-[#01CC74] text-[#FFFFFF] p-4 rounded-md shadow hover:bg-[#00b27f] w-36 h-14 text-sm font-semibold',
     text: 'bg-transparent border-none shadow-none p-0 hover:opacity-80',
   };
 

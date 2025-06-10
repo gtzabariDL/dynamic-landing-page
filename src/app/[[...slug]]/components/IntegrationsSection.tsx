@@ -2,22 +2,26 @@ import Image from 'next/image';
 import { Button } from '../../../components/ui/Button';
 import { MaxWidthContainer } from '../../../components/layouts/MaxWidthContainer';
 import { ArrowRightIcon } from '@radix-ui/react-icons';
+import { useScreenSize } from '../../../lib/hooks/useScreenSize';
 
 export default function IntegrationsSection() {
+  const { isMedium } = useScreenSize();
+
   return (
     <section className="relative  bg-white py-0 md:py-32 lg:py-40 w-full overflow-hidden">
       <div className="md:mt-14">
-        {/* Desktop Background - Centered behind content */}
-        <div className="hidden  md:block absolute top-1/2  left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <Image
-            src="/integrations-background-web.svg"
-            alt="Integration apps arranged in a circular pattern"
-            width={1230}
-            height={800}
-            className="w-[90vw] max-w-[1180px] h-auto"
-            priority
-          />
-        </div>
+        {isMedium && (
+          <div className="absolute top-1/2  left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <Image
+              src="/integrations-background-web.svg"
+              alt="Integration apps arranged in a circular pattern"
+              width={1230}
+              height={800}
+              className="w-[90vw] max-w-[1180px] h-auto"
+              loading="lazy"
+            />
+          </div>
+        )}
 
         {/* Content Overlay */}
         <MaxWidthContainer className="relative z-10 md:pt-32">
@@ -49,17 +53,19 @@ export default function IntegrationsSection() {
             </Button>
 
             {/* Mobile Image - Below content */}
-            <div className="block md:hidden w-full max-w-[500px] mx-auto mt-12 mb-16">
-              <Image
-                src="/integrations-background-mobile.svg"
-                alt="Integration apps arranged for mobile view"
-                width={500}
-                height={600}
-                className="w-full h-auto"
-                sizes="(max-width: 500px) 100vw, 500px"
-                priority
-              />
-            </div>
+            {!isMedium && (
+              <div className="w-full max-w-[500px] mx-auto mt-12 mb-16">
+                <Image
+                  src="/integrations-background-mobile.svg"
+                  alt="Integration apps arranged for mobile view"
+                  width={500}
+                  height={600}
+                  className="w-full h-auto"
+                  sizes="(max-width: 500px) 100vw, 500px"
+                  priority
+                />
+              </div>
+            )}
           </div>
         </MaxWidthContainer>
       </div>

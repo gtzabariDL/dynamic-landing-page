@@ -4,6 +4,7 @@ export enum PostHogEvents {
   LEAD_BEGAN_EMAIL_ONLY_FORM = 'lead_began_email_only_form',
   LEAD_ATTEMPTED_EMAIL_ONLY_FORM = 'lead_attempted_email_only_form',
   LEAD_CREATED = 'lead_created',
+  LEAD_CLICKED_BANNER = 'user_clicked_promo_banner',
 }
 
 // Type definitions for analytics tracking

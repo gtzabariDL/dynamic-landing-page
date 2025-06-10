@@ -13,6 +13,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning>
       <head>
         <base href="/" />
+        {/* Preload critical resources for better LCP */}
+        <link rel="preload" href="/hero-background.png" as="image" />
       </head>
       <body suppressHydrationWarning>
         <ClientLayout>{children}</ClientLayout>

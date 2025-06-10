@@ -102,3 +102,7 @@ export const trackEmailAttempt = () => {
 export const trackLeadCreated = (email?: string) => {
   trackPostHogEvent(PostHogEvents.LEAD_CREATED, {}, email);
 };
+
+export const trackLeadClickedBanner = () => {
+  trackPostHogEvent(PostHogEvents.LEAD_CLICKED_BANNER);
+};

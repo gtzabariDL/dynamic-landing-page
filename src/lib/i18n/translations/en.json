@@ -1,0 +1,68 @@
+{
+  "best-online-rental-property-management-software": {
+    "hero": {
+      "title": "The Highest Rated Online Rental Property Management Software",
+      "description": "Save 15 hours a month, put your rental portfolio on autopilot and make accounting a breeze."
+    }
+  },
+  "rental-property-management-system": {
+    "hero": {
+      "title": "The Highest-Rated Property Management System",
+      "description": "Save 15 hours a month, put your rental portfolio on autopilot and make accounting a breeze."
+    }
+  },
+  "best-real-estate-property-management-software": {
+    "hero": {
+      "title": "The Highest-Rated Real Estate Property Management Software",
+      "description": "Save 15 hours a month, put your real estate portfolio on autopilot and make accounting a breeze."
+    }
+  },
+  "resident-property-management-software": {
+    "hero": {
+      "title": "The Highest-Rated Resident Property Management Software",
+      "description": "Manage and track your residents and rentals from anywhere with ease."
+    }
+  },
+  "best-rental-property-management-accounting-software": {
+    "hero": {
+      "title": "The Highest-Rated Rental Property Management Accounting Software",
+      "description": "Save 15 hours a month, put your property financials on autopilot and make accounting a breeze."
+    }
+  },
+  "bookkeeping-rental-property-management-software": {
+    "hero": {
+      "title": "The Highest-Rated Property Management Bookkeeping Software",
+      "description": "Save 15 hours a month, put your bookkeeping on autopilot and make accounting a breeze."
+    }
+  },
+  "best-rent-collection-software-landlord": {
+    "hero": {
+      "title": "The Highest-Rated Rent Collection Software",
+      "description": "Collect rent, track payments, and automate the entire process with ease."
+    }
+  },
+  "best-residential-rental-property-management-software": {
+    "hero": {
+      "title": "The Highest-Rated Residential Property Management Software",
+      "description": "Save 15 hours a month, put your residential portfolio on autopilot and make accounting a breeze."
+    }
+  },
+  "rental-property-maintenance-software": {
+    "hero": {
+      "title": "The Highest Rated Property Maintenance Software",
+      "description": "Manage your maintenance requests, work orders, and vendors from anywhere."
+    }
+  },
+  "commercial-property-management-software": {
+    "hero": {
+      "title": "The Highest Rated Commercial Property Management Software",
+      "description": "Save 15 hours a month, put your commercial portfolio on autopilot and make accounting a breeze."
+    }
+  },
+  "default": {
+    "hero": {
+      "title": "The Highest-Rated Property Management Software",
+      "description": "Save 15 hours a month, put your rental portfolio on autopilot and make accounting a breeze."
+    }
+  }
+}

@@ -3,8 +3,11 @@
 import Image from 'next/image';
 import { Button } from '../../../components/ui/Button';
 import { MaxWidthContainer } from '../../../components/layouts/MaxWidthContainer';
+import { useScreenSize } from '../../../lib/hooks/useScreenSize';
 
 export default function PromotionalSection() {
+  const { isMedium } = useScreenSize();
+
   return (
     <section className="py-12 md:py-20 w-full bg-white">
       <MaxWidthContainer>
@@ -47,13 +50,15 @@ export default function PromotionalSection() {
             </div>
 
             {/* Image */}
-            <Image
-              src="/matt.svg"
-              alt="Support Representative"
-              width={400}
-              height={400}
-              className="md:w-auto md:h-auto md:absolute md:right-10 md:bottom-0 hidden md:block"
-            />
+            {isMedium && (
+              <Image
+                src="/matt.svg"
+                alt="Support Representative"
+                width={400}
+                height={400}
+                className="md:w-auto md:h-auto md:absolute md:right-10 md:bottom-0"
+              />
+            )}
           </div>
         </div>
       </MaxWidthContainer>

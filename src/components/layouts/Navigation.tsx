@@ -7,7 +7,7 @@ import { Button } from '../ui/Button';
 import { MaxWidthContainer } from './MaxWidthContainer';
 import { useOpenDialog } from '../../lib/providers/DialogProvider';
 import { useScrollPosition } from '../../lib/hooks/useScrollPosition';
-import { WelcomeOfferStickyBanner } from '../banners/welcomeOffer/WelcomeOfferStickyBanner';
+// import { WelcomeOfferStickyBanner } from '../banners/welcomeOffer/WelcomeOfferStickyBanner';
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,7 +22,7 @@ export default function Navigation() {
   };
 
   const handleMenuClick = (section: string) => {
-    setIsMenuOpen(false); // Close the menu
+    setIsMenuOpen(false);
 
     // Wait for the menu to close before scrolling
     setTimeout(() => {
@@ -50,7 +50,7 @@ export default function Navigation() {
   return (
     <>
       <div className="sticky top-0 z-40">
-        <WelcomeOfferStickyBanner />
+        {/* <WelcomeOfferStickyBanner /> */}
 
         <nav
           className={`w-full py-3 transition-all duration-300 ${
@@ -121,7 +121,7 @@ export default function Navigation() {
           <div className="flex flex-col h-full">
             {/* Header */}
             <div className="flex justify-between items-center px-4 py-3">
-              <Image src="/doorloopLogo.svg" alt="DoorLoop Logo" width={120} height={32} />
+              <Image src="/doorloopLogo.svg" alt="DoorLoop Logo" width={120} height={32} priority />
               <button
                 onClick={() => setIsMenuOpen(false)}
                 className="text-[#2F3E83]"

@@ -3,11 +3,13 @@
 import Image from 'next/image';
 import { DoorLoopLogo } from '../../../components/ui/DoorLoopLogo';
 import { UIErrorMessage } from '../../../components/ui/UIErrorMessage';
-import { useState } from 'react';
+import { useState, memo, useMemo, useCallback } from 'react';
 import { MaxWidthContainer } from '../../../components/layouts/MaxWidthContainer';
 import { trackEmailAttempt, trackEmailBegan } from '../../../lib/utils/analytics';
 import { navigateToDemoForm } from '../../../lib/utils/navigation';
 import { validateEmail, getErrorMessage } from '../../../lib/utils/validation';
+import { useTranslationWithSlug } from '../../../lib/hooks/useTranslationWithSlug';
+import { useScreenSize } from '../../../lib/hooks/useScreenSize';
 
 const reviewPlatforms = [
   { src: 'softwareAdvice.svg', alt: 'Software Advice', width: 120, height: 40 },
@@ -16,84 +18,103 @@ const reviewPlatforms = [
   { src: 'getApp.svg', alt: 'GetApp', width: 120, height: 40 },
 ];
 
-export default function HeroSection() {
+function HeroSection() {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [hasTrackedEmailBegan, setHasTrackedEmailBegan] = useState(false);
   const [error, setError] = useState<string>('');
 
-  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newEmail = e.target.value;
-    setEmail(newEmail);
+  const { getTranslation } = useTranslationWithSlug();
+  const { isMedium } = useScreenSize();
 
-    if (error) {
-      setError('');
-    }
-
-    if (newEmail.length > 0 && !hasTrackedEmailBegan) {
-      trackEmailBegan();
-      setHasTrackedEmailBegan(true);
-    }
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
+  const handleSubmit = useCallback(
+    async (e: React.FormEvent) => {
       e.preventDefault();
-      // Create a synthetic form event
-      const formEvent = {
-        preventDefault: () => {},
-      } as React.FormEvent;
-      handleSubmit(formEvent);
-    }
-  };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!email.trim()) {
-      setError('Please enter your email address');
-      return;
-    }
-
-    trackEmailAttempt();
-    setIsSubmitting(true);
-    setError('');
-
-    try {
-      const validation = await validateEmail(email.trim());
-
-      if (!validation.isValid) {
-        setError(getErrorMessage(validation.result));
-        setIsSubmitting(false);
+      if (!email.trim()) {
+        setError('Please enter your email address');
         return;
       }
 
-      navigateToDemoForm(email);
-      setEmail('');
-      setHasTrackedEmailBegan(false);
-    } catch {
-      setError('Something went wrong. Please try again.');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+      trackEmailAttempt();
+      setIsSubmitting(true);
+      setError('');
 
-  const basePath = '';
-  const backgroundStyle = {
-    backgroundImage: `url(${basePath}/hero-background.png)`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center center',
-    backgroundRepeat: 'no-repeat',
-    backgroundAttachment: 'scroll',
-  };
+      try {
+        const validation = await validateEmail(email.trim());
+
+        if (!validation.isValid) {
+          setError(getErrorMessage(validation.result));
+          setIsSubmitting(false);
+          return;
+        }
+
+        navigateToDemoForm(email);
+        setEmail('');
+        setHasTrackedEmailBegan(false);
+      } catch {
+        setError('Something went wrong. Please try again.');
+      } finally {
+        setIsSubmitting(false);
+      }
+    },
+    [email]
+  );
+
+  const handleEmailChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const newEmail = e.target.value;
+      setEmail(newEmail);
+
+      if (error) {
+        setError('');
+      }
+
+      if (newEmail.length > 0 && !hasTrackedEmailBegan) {
+        trackEmailBegan();
+        setHasTrackedEmailBegan(true);
+      }
+    },
+    [error, hasTrackedEmailBegan]
+  );
+
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        // Create a synthetic form event
+        const formEvent = {
+          preventDefault: () => {},
+        } as React.FormEvent;
+        handleSubmit(formEvent);
+      }
+    },
+    [handleSubmit]
+  );
+
+  // Memoize the background style
+  const backgroundStyle = useMemo(
+    () => ({
+      backgroundImage: `url(/hero-background.png)`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center center',
+      backgroundRepeat: 'no-repeat',
+      backgroundAttachment: 'scroll',
+    }),
+    []
+  );
 
   return (
     <section className="relative flex-grow flex-col flex items-center justify-center px-4 py-8 w-full md:h-[100vh] bg-[#2F3E83] md:bg-transparent md:-mt-[58px] lg:-mt-20 overflow-hidden">
-      <div
-        className="absolute top-0 left-0 w-full h-full -z-10 hidden md:block md:opacity-90"
-        style={backgroundStyle}
-      />
-      <div className="absolute top-0 left-0 w-full h-full bg-blue-500/20 -z-10 hidden md:block" />
+      {isMedium && (
+        <>
+          <div
+            className="absolute top-0 left-0 w-full h-full -z-10 opacity-90"
+            style={backgroundStyle}
+          />
+          <div className="absolute top-0 left-0 w-full h-full bg-blue-500/20 -z-10" />
+        </>
+      )}
 
       <div className="relative z-10 w-full h-full flex flex-col items-center justify-center pt-14 sm:pt-0">
         <MaxWidthContainer className="h-full flex flex-col items-center justify-center text-center">
@@ -102,12 +123,11 @@ export default function HeroSection() {
           </div>
 
           <h1 className="text-white text-[28px] md:text-[42px] text-center font-bold leading-none">
-            The Highest-Rated Property Management Software
+            {getTranslation('hero.title')}
           </h1>
 
           <span className="text-center mt-6 mb-14 md:mb-6 text-white max-w-4xl text-[16px] xs:text-[20px]">
-            Save 15 hours a month, put your rental portfolio on autopilot and make accounting a
-            breeze.
+            {getTranslation('hero.description')}
           </span>
 
           <form
@@ -122,7 +142,7 @@ export default function HeroSection() {
                   width={24}
                   height={24}
                   className="text-gray-400 mr-3 ml-1"
-                  priority={false}
+                  priority
                 />
                 <input
                   value={email}
@@ -152,23 +172,7 @@ export default function HeroSection() {
             variant="hero"
           />
 
-          <div className="flex flex-col md:flex-row justify-center items-center w-full max-w-sm md:max-w-full space-y-2 mt-14 space-x-5">
-            <Image
-              // className="dark:invert"
-              src="/saleIcon.svg"
-              alt="Spring Sale Icon"
-              width={120}
-              height={60}
-              priority={false}
-              loading="lazy"
-            />
-            <span className="text-white text-center text-[16px] font-normal mt-4 mb-6">
-              A fresh path to real growth. Get one month free + zero onboarding fees on all annual
-              plans. Hurry—offer ends <span className="font-bold">Friday May 23rd</span>.
-            </span>
-          </div>
-
-          {/* Review Platforms Grid */}
+          {/* Review Platforms Grid - Lazy load these images */}
           <div className="grid grid-cols-2 md:flex md:items-center max-w-6xl mt-8 gap-6 md:gap-10">
             {reviewPlatforms.map((platform) => (
               <Image
@@ -178,7 +182,7 @@ export default function HeroSection() {
                 width={platform.width}
                 height={platform.height}
                 className="w-auto h-auto"
-                loading="lazy"
+                priority
               />
             ))}
           </div>
@@ -187,3 +191,5 @@ export default function HeroSection() {
     </section>
   );
 }
+
+export default memo(HeroSection);

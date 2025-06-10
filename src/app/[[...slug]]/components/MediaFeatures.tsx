@@ -32,6 +32,7 @@ export default function MediaFeatures() {
                   width={70}
                   height={40}
                   className="w-auto h-auto"
+                  priority
                 />
               </div>
             );

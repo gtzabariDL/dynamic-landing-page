@@ -1,25 +1,28 @@
 import Image from 'next/image';
 import { MaxWidthContainer } from '../../../components/layouts/MaxWidthContainer';
+import { useScreenSize } from '../../../lib/hooks/useScreenSize';
 
 const features = [
   {
-    icon: 'cutting-edge-tech.svg',
+    icon: '/cutting-edge-tech.svg',
     title: 'Cutting-edge technology',
     description: 'Simple, secure, and reliable software.',
   },
   {
-    icon: 'world-class-support.svg',
+    icon: '/world-class-support.svg',
     title: 'World-class support',
     description: 'US-based experts committed to your success.',
   },
   {
-    icon: 'free-educational-resources.svg',
+    icon: '/free-educational-resources.svg',
     title: 'Free educational resources',
     description: 'Thousands of videos, guides, and more.',
   },
 ];
 
 export default function WhyDoorLoopSection() {
+  const { isMedium } = useScreenSize();
+
   return (
     <section className="relative bg-[#2F3E83] pt-32 w-full overflow-hidden">
       <MaxWidthContainer className="px-0!">
@@ -43,7 +46,7 @@ export default function WhyDoorLoopSection() {
             {features.map((feature, index) => (
               <div key={index} className="flex gap-6">
                 <div className="w-8 h-8 mt-1.5">
-                  <Image src={`/${feature.icon}`} alt="" width={32} height={32} />
+                  <Image src={feature.icon} alt="" width={32} height={32} />
                 </div>
 
                 <div className="flex flex-col">
@@ -56,22 +59,24 @@ export default function WhyDoorLoopSection() {
         </div>
 
         <div className="flex justify-center">
-          <Image
-            src="/why-doorloop-web.png"
-            alt="DoorLoop Dashboard Interface"
-            width={1450}
-            height={540}
-            className="hidden md:block"
-            priority
-          />
-          <Image
-            src="/why-doorloop-mobile.png"
-            alt="DoorLoop Dashboard Interface"
-            width={1450}
-            height={540}
-            className="block md:hidden -mt-20"
-            priority
-          />
+          {isMedium ? (
+            <Image
+              src="/why-doorloop-web.png"
+              alt="DoorLoop Dashboard Interface"
+              width={1450}
+              height={540}
+              priority
+            />
+          ) : (
+            <Image
+              src="/why-doorloop-mobile.png"
+              alt="DoorLoop Dashboard Interface"
+              width={1450}
+              height={540}
+              className="-mt-20"
+              priority
+            />
+          )}
         </div>
       </MaxWidthContainer>
     </section>
