@@ -177,7 +177,7 @@ function HeroSection() {
             {reviewPlatforms.map((platform) => (
               <Image
                 key={platform.alt}
-                src={`/${platform.src}`}
+                src={`${platform.src}`}
                 alt={platform.alt}
                 width={platform.width}
                 height={platform.height}
