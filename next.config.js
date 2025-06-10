@@ -20,7 +20,7 @@ const nextConfig = {
 	},
 	pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
 	output: 'export',
-	trailingSlash: true,
+	trailingSlash: false,
 	// Performance optimizations
 	poweredByHeader: false,
 	compress: true,
