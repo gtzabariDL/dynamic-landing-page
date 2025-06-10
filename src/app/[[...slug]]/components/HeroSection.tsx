@@ -10,6 +10,7 @@ import { navigateToDemoForm } from '../../../lib/utils/navigation';
 import { validateEmail, getErrorMessage } from '../../../lib/utils/validation';
 import { useTranslationWithSlug } from '../../../lib/hooks/useTranslationWithSlug';
 import { useScreenSize } from '../../../lib/hooks/useScreenSize';
+import { getImagePath } from '../../../lib/utils/image';
 
 const reviewPlatforms = [
   { src: 'softwareAdvice.svg', alt: 'Software Advice', width: 120, height: 40 },
@@ -95,7 +96,7 @@ function HeroSection() {
   // Memoize the background style
   const backgroundStyle = useMemo(
     () => ({
-      backgroundImage: `url(/hero-background.png)`,
+      backgroundImage: `url(${getImagePath('/hero-background.png')})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center center',
       backgroundRepeat: 'no-repeat',
@@ -137,7 +138,7 @@ function HeroSection() {
             <div className="flex flex-col w-full md:w-80">
               <div className="flex relative items-center w-full bg-white rounded-md md:rounded-md md:rounded-r-none px-3 py-2 shadow-sm">
                 <Image
-                  src="/email-icon.svg"
+                  src={getImagePath('/email-icon.svg')}
                   alt="Email"
                   width={24}
                   height={24}
@@ -177,7 +178,7 @@ function HeroSection() {
             {reviewPlatforms.map((platform) => (
               <Image
                 key={platform.alt}
-                src={`${platform.src}`}
+                src={getImagePath(`/${platform.src}`)}
                 alt={platform.alt}
                 width={platform.width}
                 height={platform.height}

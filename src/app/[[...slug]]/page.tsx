@@ -50,6 +50,7 @@ const WhyDoorLoopSection = dynamic(() => import('./components/WhyDoorLoopSection
   loading: () => <UISectionLoader variant="default" />,
 });
 
+// Note: These paths will be processed by getImagePath in the FeatureCard component
 const featureCards = [
   {
     icon: '/person.svg',

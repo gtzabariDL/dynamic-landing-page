@@ -5,6 +5,7 @@ import { Button } from '../../ui/Button';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { useScreenSize } from '../../../lib/hooks/useScreenSize';
+import { getImagePath } from '../../../lib/utils/image';
 
 export const WelcomeOfferStaticBanner = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -43,7 +44,7 @@ export const WelcomeOfferStaticBanner = () => {
             <div className="flex items-center justify-center w-full">
               {isMedium && (
                 <Image
-                  src="/welcome-offer-banner.svg"
+                  src={getImagePath('/welcome-offer-banner.svg')}
                   alt="Welcome offer banner"
                   width={300}
                   height={350}

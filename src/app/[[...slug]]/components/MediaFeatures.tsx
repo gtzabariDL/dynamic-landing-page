@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { MaxWidthContainer } from '../../../components/layouts/MaxWidthContainer';
+import { getImagePath } from '../../../lib/utils/image';
 
 const mediaFeatures = [
   { src: 'mediaLogos/nbc.svg', alt: 'NBC' },
@@ -27,7 +28,7 @@ export default function MediaFeatures() {
                 className={`flex justify-center ${isLast && isOdd ? 'col-span-2 md:col-span-1' : ''}`}
               >
                 <Image
-                  src={`/${platform.src}`}
+                  src={getImagePath(`/${platform.src}`)}
                   alt={platform.alt}
                   width={70}
                   height={40}

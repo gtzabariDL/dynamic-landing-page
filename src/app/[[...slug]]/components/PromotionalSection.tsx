@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { Button } from '../../../components/ui/Button';
 import { MaxWidthContainer } from '../../../components/layouts/MaxWidthContainer';
 import { useScreenSize } from '../../../lib/hooks/useScreenSize';
+import { getImagePath } from '../../../lib/utils/image';
 
 export default function PromotionalSection() {
   const { isMedium } = useScreenSize();
@@ -52,7 +53,7 @@ export default function PromotionalSection() {
             {/* Image */}
             {isMedium && (
               <Image
-                src="/matt.svg"
+                src={getImagePath('/matt.svg')}
                 alt="Support Representative"
                 width={400}
                 height={400}

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { MaxWidthContainer } from '../../../components/layouts/MaxWidthContainer';
 import { memo } from 'react';
+import { getImagePath } from '../../../lib/utils/image';
 
 const testimonials = [
   {
@@ -98,7 +99,7 @@ const TestimonialsSection = memo(function TestimonialsSection() {
                   </p>
                   <div className="flex items-center gap-3">
                     <Image
-                      src={testimonial.image}
+                      src={getImagePath(testimonial.image)}
                       alt={testimonial.name}
                       width={48}
                       height={48}

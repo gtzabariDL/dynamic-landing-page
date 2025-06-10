@@ -5,6 +5,7 @@ import { Button } from '../../../components/ui/Button';
 import { useState } from 'react';
 import { MaxWidthContainer } from '../../../components/layouts/MaxWidthContainer';
 import { useScreenSize } from '../../../lib/hooks/useScreenSize';
+import { getImagePath } from '../../../lib/utils/image';
 
 type PropertyType = 'Residential' | 'Commercial' | 'Student Housing' | 'HOA';
 
@@ -29,7 +30,7 @@ export default function PropertyManagement() {
         {isMedium && (
           <div className="relative">
             <Image
-              src="/manageAnyProperty.png"
+              src={getImagePath('/manageAnyProperty.png')}
               alt="Property Management Dashboard"
               width={600}
               height={500}

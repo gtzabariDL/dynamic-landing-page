@@ -2,6 +2,9 @@ import '../styles/globals.css';
 import { Metadata } from 'next';
 import ClientLayout from '../components/layouts/ClientLayout';
 
+// Base path for GitHub Pages deployment
+const basePath = process.env.NODE_ENV === 'production' ? '/dynamic-landing-page' : '';
+
 export const metadata: Metadata = {
   title: 'DoorLoop Property Management Software',
   description:
@@ -14,7 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <base href="/" />
         {/* Preload critical resources for better LCP */}
-        <link rel="preload" href="/hero-background.png" as="image" />
+        <link rel="preload" href={`${basePath}/hero-background.png`} as="image" />
       </head>
       <body suppressHydrationWarning>
         <ClientLayout>{children}</ClientLayout>

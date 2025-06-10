@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Button } from '../../../components/ui/Button';
 import { MaxWidthContainer } from '../../../components/layouts/MaxWidthContainer';
+import { getImagePath } from '../../../lib/utils/image';
 
 export default function SupportSection() {
   return (
@@ -8,7 +9,7 @@ export default function SupportSection() {
       <MaxWidthContainer className="flex flex-col-reverse md:flex-row items-start md:items-center justify-between gap-8 md:gap-12">
         <div className="flex justify-center md:justify-start flex-shrink-0">
           <Image
-            src="/supportStats/supportStats.png"
+            src={getImagePath('/supportStats/supportStats.png')}
             alt="Support Statistics"
             width={520}
             height={660}

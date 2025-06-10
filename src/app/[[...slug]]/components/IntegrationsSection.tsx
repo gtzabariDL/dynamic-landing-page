@@ -3,6 +3,7 @@ import { Button } from '../../../components/ui/Button';
 import { MaxWidthContainer } from '../../../components/layouts/MaxWidthContainer';
 import { ArrowRightIcon } from '@radix-ui/react-icons';
 import { useScreenSize } from '../../../lib/hooks/useScreenSize';
+import { getImagePath } from '../../../lib/utils/image';
 
 export default function IntegrationsSection() {
   const { isMedium } = useScreenSize();
@@ -13,7 +14,7 @@ export default function IntegrationsSection() {
         {isMedium && (
           <div className="absolute top-1/2  left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             <Image
-              src="/integrations-background-web.svg"
+              src={getImagePath('/integrations-background-web.svg')}
               alt="Integration apps arranged in a circular pattern"
               width={1230}
               height={800}
@@ -56,7 +57,7 @@ export default function IntegrationsSection() {
             {!isMedium && (
               <div className="w-full max-w-[500px] mx-auto mt-12 mb-16">
                 <Image
-                  src="/integrations-background-mobile.svg"
+                  src={getImagePath('/integrations-background-mobile.svg')}
                   alt="Integration apps arranged for mobile view"
                   width={500}
                   height={600}
